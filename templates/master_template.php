@@ -15,12 +15,6 @@
     <link href="assets/css/main.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <style>
-        body {
-            min-height: 2000px !important;
-            padding-top: 70px;
-        }
-    </style>
 
 
     <!-- jQuery -->
@@ -134,13 +128,11 @@
     <!-- /.navbar-collapse -->
 </nav>
 
-<div class="container">
 
     <!-- Main component for a primary marketing message or call to action -->
     <?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>
     <?php @require "views/$controller/{$controller}_$action.php"; ?>
 
-</div>
 <!-- /container -->
 
 
