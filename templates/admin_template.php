@@ -17,7 +17,14 @@
     <link href="assets/css/icon.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="assets/css/admin.css" rel="stylesheet">
+    <?php if ($controller == "admin" && $action == "index"): ?>
+        <link href="assets/css/admin.css" rel="stylesheet">
+    <?php elseif ($action != "index"): ?>
+        <link href="assets/css/main.css" rel="stylesheet">
+    <?php endif; ?>
+
+
+    <script src="vendor/components/jquery/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,63 +36,11 @@
 </head>
 
 <body>
-
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2>Lisa uus toode</h2>
-            </div>
-            <div class="modal-body">
-                <div class="container-modal">
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><strong>Uue toote andmed</strong></div>
-                        <div class="panel-body">
-
-                            <!-- Standard Form -->
-                            <form id="newProduct" method="post">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name"
-                                           placeholder="Product name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Select list (select one):</label>
-                                    <select class="form-control" id="category" name="category">
-                                        <option value="Furniture">Furniture</option>
-                                        <option value="Sketchbooks">Sketchbooks</option>
-                                        <option value="Woodturning">Woodturning</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" step="0.01" class="form-control" id="price" name="price"
-                                           placeholder="Price" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" class="form-control" id="qty" name="qty"
-                                           placeholder="Quantity in stock" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" type="textarea" id="description" name="description"
-                                              placeholder="Product description" maxlength="140" rows="7"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-default create">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
+<?php if ($action != "index"): ?>
+    <button id="hiddenBtn" class="btn btnColor">
+        <i class="glyphicon glyphicon-cog"></i>
+    </button>
+<?php endif; ?>
 <nav id="adminNavbar" class="navbar navbar-default navbar-static-top topbar" role="admin">
     <div class="container-fluid">
 
@@ -95,25 +50,55 @@
                 <span class="hidden-xs">MKR Kild<sup>Admin</sup></span>
             </a>
             <div class="ui buttons position">
-                <button class="navbar-text ui inverted red button">
-                    <a href="index.php">Home</a>
-                </button>
-                <button class="navbar-text ui inverted blue button">
-                    <a href="admin/furniture">Furniture</a>
-                </button>
-                <button class="navbar-text ui inverted green button">
-                    <a href="sketchbooks.php">Sketchbooks</a>
-                </button>
-                <button class="navbar-text ui inverted orange button">
-                    <a href="woodturning.php">Woodturning</a>
-                </button>
-                <button class="navbar-text ui inverted purple button">
-                    <a href="about.php">About</a>
-                </button>
-                <button class="navbar-text ui inverted yellow button">
-                    <a href="contact.php">Contact</a>
-                </button>
-
+                <?php if ($controller == "admin" && $action == "index"): ?>
+                    <button class="navbar-text ui inverted red button">
+                        <a href="admin/home">Home</a>
+                    </button>
+                    <button class="navbar-text ui inverted blue button">
+                        <a href="admin/furniture">Furniture</a>
+                    </button>
+                    <button class="navbar-text ui inverted green button">
+                        <a href="admin/sketchbooks">Sketchbooks</a>
+                    </button>
+                    <button class="navbar-text ui inverted orange button">
+                        <a href="admin/woodturning">Woodturning</a>
+                    </button>
+                    <button class="navbar-text ui inverted purple button">
+                        <a href="admin/about">About</a>
+                    </button>
+                    <button class="navbar-text ui inverted yellow button">
+                        <a href="admin/contact">Contact</a>
+                    </button>
+                <?php elseif ($action == "home" && $controller == "admin"): ?>
+                    <button class="navbar-text ui inverted red button" id="showModal">
+                        <a data-toggle="modal" data-target="#myModal" class="sidebar-toggle" value="Background">
+                            Background
+                        </a>
+                        <button data-toggle="modal" data-target="#myModal" id="closeModal"
+                                class="navbar-text ui inverted red button">
+                            <a>
+                                Close
+                            </a>
+                        </button>
+                    </button>
+                    <button class="navbar-text ui inverted green button">
+                        <a href="admin/index">Dashboard</a>
+                    </button>
+                <?php elseif ($action == "about" && $controller == "admin"): ?>
+                    <button id="edit" class="navbar-text ui inverted red button">
+                        <a>
+                            Edit
+                        </a>
+                    </button>
+                    <button id="save" class="navbar-text ui inverted red button">
+                        <a>
+                            Save
+                        </a>
+                    </button>
+                    <button class="navbar-text ui inverted green button">
+                        <a href="admin/index">Dashboard</a>
+                    </button>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -124,10 +109,14 @@
 
                 <li class="dropdown">
                     <button class="navbar-btn active" data-toggle="dropdown">
-                        <img src="./../img/logo2.png" class="img-circle">
+                        <img src="uploads/logo2.png" class="img-circle">
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="./../login/logout.php">Logout</a></li>
+                        <li><a href="admin/logout">Logout</a></li>
+                        <?php if ($action != "index"): ?>
+                            <li><a id="hideNav">Hide</a></li>
+                            <li id="showNav" class="hidden"><a>Show</a></li>
+                        <?php endif; ?>
                     </ul>
                 </li>
 
@@ -137,37 +126,121 @@
         </div>
     </div>
 </nav>
+<?php if ($action != "index"): ?>
+<!-- Fixed navbar -->
+<nav id="navbarRegular" class="navbar navbar-inverse navbar-fixed-top navfix" role="navigation">
+    <div class="container navfix">
+        <div id="mobileNav">
+            <div class="wrapper">
+                <nav class="mobileNav">
+                    <ul class="nav text-center">
+                        <li>
+                            <a href="admin/home">Home</a>
+                        </li>
+                        <li class="active">
+                            <a id="Furniture" href="admin/furniture">Furniture</a>
+                        </li>
+                        <li>
+                            <a id="Woodturning" href="admin/woodturning">Woodturning</a>
+                        </li>
+                        <li>
+                            <a id="Sketchbooks" href="admin/sketchbooks">Sketchbooks</a>
+                        </li>
+                        <li>
+                            <a href="admin/about">About</a>
+                        </li>
+                        <li>
+                            <a href="admin/contact">Contact</a>
+                        </li>
+                        <ul class="nav lang">
+                            <li>
+                                <a href="#">ENG</a>
+                            </li>
+                            <li>
+                                <a class="lang-sep" href="#">EST</a>
+                            </li>
+                            <li>
+                                <a class="lang-sep" href="#">RUS</a>
+                            </li>
+                        </ul>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="mobileMenuLink" class="text-center">
+            <a>Menu</a>
+        </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a href="./"><img src="uploads/logo.png" class="navbar-brand"></a>
+            <div class="text-right hidden-xs" style="padding-right: 100px">
+                <!--<div class="shopping-cart">-->
+                <div class="nav languages">
+                    <ul class="nav navbar-lang">
+                        <li>
+                            <a href="#">EST</a>
+                        </li>
+                        <li>
+                            <a class="active" href="#">ENG</a>
+                        </li>
+                        <li>
+                            <a href="#">RUS</a>
+                        </li>
+                    </ul>
+                </div>
+                <a class="cartIcon hidden" href="cart.php" style="position: relative">
+                    <img src="./img/shoppingcart.png" width="35" height="35">
 
-<article class="wrapper">
-
-    <aside class="sidebar">
-        <ul class="sidebar-nav">
-            <li class="active"><a href="#dashboard" data-toggle="tab"><i class="glyphicon glyphicon-dashboard"></i>
-                    <span>Dashboard</span></a></li>
-        </ul>
-    </aside>
-
-    <section class="main">
-        <div class="container">
-
-            <!-- Main component for a primary marketing message or call to action -->
-            <?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>
-            <?php @require "views/$controller/{$controller}_$action.php"; ?>
+                    <span id="items_in_shopping_cart" data-qty="0">                    </span>
+                </a>
+            </div>
 
         </div>
-        <!-- /container -->
-    </section>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav text-center">
+            <li>
+                <a href="admin/home">Home</a>
+            </li>
+            <li>
+                <a id="Furniture" href="admin/furniture">Furniture</a>
+            </li>
+            <li>
+                <a id="Woodturning" href="admin/woodturning">Woodturning</a>
+            </li>
+            <li>
+                <a id="Sketchbooks" href="admin/sketchbooks">Sketchbooks</a>
+            </li>
+            <li>
+                <a href="admin/about">About</a>
+            </li>
+            <li>
+                <a href="admin/contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <hr class="navsep">
+    <!-- /.navbar-collapse -->
+</nav>
+<?php endif; ?>
 
-</article>
+<section class="main">
+    <div class="container">
 
-<script src="./../js/jquery.js"></script>
-<script src="./../js/main.js"></script>
-<script src="./../js/semantic.min.js"></script>
+        <!-- Main component for a primary marketing message or call to action -->
+        <?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>
+        <?php @require "views/$controller/{$controller}_$action.php"; ?>
+
+    </div>
+    <!-- /container -->
+</section>
+
 
 <!-- Bootstrap Core JavaScript -->
-<script src="./../js/bootstrap.min.js"></script>
+<script src="vendor/components/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- Script to Activate the Carousel -->
-<script src="./../js/carousel.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/semantic.min.js"></script>
 
 </body>

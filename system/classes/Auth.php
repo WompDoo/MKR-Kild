@@ -8,7 +8,7 @@
 class Auth
 {
 
-    public $logged_in = FALSE;
+    public $logged_in = TRUE;
 
     function __construct()
     {

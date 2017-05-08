@@ -148,5 +148,8 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="vendor/components/bootstrap/js/bootstrap.min.js"></script>
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
+<script src="assets/js/semantic.min.js"></script>
 </body>
 </html>

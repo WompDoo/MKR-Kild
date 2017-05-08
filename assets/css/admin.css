@@ -238,3 +238,7 @@ nav[role="admin"] .navbar-brand {
     height: 30px;
     width: 30px;
 }
+
+#ProductTable {
+    padding-top:20px;
+}
