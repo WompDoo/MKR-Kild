@@ -283,7 +283,7 @@ $(document).ready(function () {
         form_data.append('file', file_data);
         event.preventDefault();
         $.ajax({
-            url: './../controllers/upload.php', // point to server-side PHP script
+            url: 'admin/upload', // point to server-side PHP script
             dataType: 'text',  // what to expect back from the PHP script, if anything
             cache: false,
             contentType: false,
@@ -293,9 +293,10 @@ $(document).ready(function () {
             success: function (data) {
                 $("#selectablePics-dad").load(location.href + " #selectablePics");
                 $.ajax({
-                    url: "./../controllers/getImages.php",
+                    url: "admin/getImages",
                     dataType: "json",
                     success: function (data) {
+
                         $.each(data, function (i, filename) {
                             $('#bgPics').prepend('<option data-img-src="' + filename + '" value="' + filename + '"></option>');
                             initializePlugins();
@@ -308,7 +309,7 @@ $(document).ready(function () {
 
 // To display uploaded images
     $.ajax({
-        url: "./../controllers/getImages.php",
+        url: "admin/getImages",
         dataType: "json",
         success: function (data) {
 

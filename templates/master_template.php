@@ -93,7 +93,7 @@
                     </ul>
                 </div>
                 <a class="cartIcon hidden" href="cart.php" style="position: relative">
-                    <img src="./img/shoppingcart.png" width="35" height="35">
+                    <img src="uploads/shoppingcart.png" width="35" height="35">
 
                     <span id="items_in_shopping_cart" data-qty="0">                    </span>
                 </a>

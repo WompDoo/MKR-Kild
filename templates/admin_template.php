@@ -14,6 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="vendor/components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/semantic.min.css" rel="stylesheet">
+    <link href="assets/css/image-picker.css" rel="stylesheet">
     <link href="assets/css/icon.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -21,6 +22,9 @@
         <link href="assets/css/admin.css" rel="stylesheet">
     <?php elseif ($action != "index"): ?>
         <link href="assets/css/main.css" rel="stylesheet">
+    <?php endif; ?>
+    <?php if ($action == "home"): ?>
+        <link href="assets/css/fix.css" rel="stylesheet">
     <?php endif; ?>
 
 
@@ -190,7 +194,7 @@
                         </ul>
                     </div>
                     <a class="cartIcon hidden" href="cart.php" style="position: relative">
-                        <img src="./img/shoppingcart.png" width="35" height="35">
+                        <img src="uploads/shoppingcart.png" width="35" height="35">
 
                         <span id="items_in_shopping_cart" data-qty="0">                    </span>
                     </a>
@@ -246,5 +250,6 @@
 
 <script src="assets/js/main.js"></script>
 <script src="assets/js/semantic.min.js"></script>
+<script src="assets/js/image-picker.min.js"></script>
 
 </body>

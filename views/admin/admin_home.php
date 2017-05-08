@@ -26,7 +26,6 @@
                                 <div id="selectablePics">
                                     <select class="image-picker " id="bgPics" data-limit="3" multiple="multiple">
                                     </select>
-
                                 </div>
                                 <button type="submit" id="changeBG" class="ui button inverted blue text-center
 "

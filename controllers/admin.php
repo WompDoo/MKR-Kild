@@ -72,6 +72,35 @@ VALUES ('$name', '$category', '$description', $price, $qty)");
 
     }
 
+    function getImages()
+    {
+        $filenameArray = [];
+        $dir = 'uploads/background';
+        $handle = opendir($dir);
+        while ($file = readdir($handle)) {
+            if ($file !== '.' && $file !== '..') {
+                array_push($filenameArray, "uploads/background/" . $file);
+            }
+        }
+
+        exit (json_encode($filenameArray));
+    }
+
+    function upload()
+    {
+        if (!file_exists('uploads/background/')) {
+            mkdir('uploads/background/', 0777, true);
+        }
+        $total = count($_FILES['file']['name']);
+        for ($i = 0; $i < $total; $i++) {
+            if (file_exists('uploads/background/' . $_FILES['file']['name'])) {
+            } else {
+                move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/background/' . $_FILES['file']['name']);
+            }
+        }
+        exit ();
+    }
+
     function about()
     {
 
