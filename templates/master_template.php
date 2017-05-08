@@ -32,7 +32,7 @@
 <body>
 
 <!-- Fixed navbar -->
-<nav id="navbarRegular" class="navbar navbar-inverse navbar-fixed-top navfix" role="navigation">
+<nav id="navbarRegular" class="navbar navbar-inverse <?php if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix" role="navigation">
     <div class="container navfix">
         <div id="mobileNav">
             <div class="wrapper">
