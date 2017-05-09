@@ -13,6 +13,11 @@ class Products
         return get_all("SELECT * FROM products LEFT JOIN product_types USING (product_type_id) WHERE product_type_id = $product_type");
     }
 
+    static function getItem($id)
+    {
+        return get_all("SELECT * FROM products WHERE product_id = $id");
+    }
+
     static function getAll()
     {
         return get_all("SELECT * FROM products LEFT JOIN product_types USING (product_type_id)");
