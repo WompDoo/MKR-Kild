@@ -40,7 +40,7 @@ CREATE TABLE `products` (
 -- Andmete tõmmistamine tabelile `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_type_id`, `product_image`, `product_price`, `product_qty`, `product_details`) VALUES
+INSERT INTO product (id, `product_name`, `product_type_id`, `product_image`, `product_price`, `product_qty`, `product_details`) VALUES
 (1, 'C', 1, 'kapid.jpg', '212.00', 19, 'Ilus asi'),
 (2, 'furniture #2', 2, 'laud.jpg', '123.00', 8, 'teine asi'),
 (3, 'Mingi asi', 3, 'Riiul1.jpg', '1231.00', 4, 'kolmas käib kah'),
@@ -63,7 +63,7 @@ CREATE TABLE `product_types` (
 -- Andmete tõmmistamine tabelile `product_types`
 --
 
-INSERT INTO `product_types` (`product_type_id`, `product_type`) VALUES
+INSERT INTO producttype (`product_type_id`, `product_type`) VALUES
 (1, 'Furniture'),
 (2, 'Woodturning'),
 (3, 'Sketchbooks');
@@ -119,13 +119,13 @@ INSERT INTO `users` (`user_id`, `user_name`, `is_admin`, `password`, `email`, `d
 --
 -- Indeksid tabelile `products`
 --
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`);
+ALTER TABLE product
+  ADD PRIMARY KEY (id);
 
 --
 -- Indeksid tabelile `product_types`
 --
-ALTER TABLE `product_types`
+ALTER TABLE producttype
   ADD PRIMARY KEY (`product_type_id`);
 
 --
@@ -149,12 +149,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT tabelile `products`
 --
-ALTER TABLE `products`
-  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Autocreated', AUTO_INCREMENT=10;
+ALTER TABLE product
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Autocreated', AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT tabelile `product_types`
 --
-ALTER TABLE `product_types`
+ALTER TABLE producttype
   MODIFY `product_type_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT tabelile `translations`

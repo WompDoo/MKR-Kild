@@ -21,21 +21,21 @@ class admin extends Controller
     function ajax_addStock()
     {
         $id = $_POST['id'];
-        q("UPDATE products SET product_qty = product_qty + 1 WHERE product_id = '$id'");
+        \R::exec("UPDATE product SET product_qty = product_qty + 1 WHERE product_id = '$id'");
 
     }
 
     function ajax_rmvStock()
     {
         $id = $_POST['id'];
-        q("UPDATE products SET product_qty = product_qty - 1 WHERE product_id = '$id' AND product_qty > 0");
+        \R::exec("UPDATE product SET product_qty = product_qty - 1 WHERE product_id = '$id' AND product_qty > 0");
 
     }
 
     function ajax_destroyStock()
     {
         $id = $_POST['id'];
-        q("DELETE FROM products WHERE product_id = '$id'");
+        \R::exec("DELETE FROM product WHERE product_id = '$id'");
 
     }
 
@@ -47,7 +47,7 @@ class admin extends Controller
         $description = $_POST["description"];
         $category = $_POST['category'];
 
-        q("INSERT INTO products (product_name, product_type_id, product_details, product_price, product_qty)
+        \R::exec("INSERT INTO product (product_name, product_type_id, product_details, product_price, product_qty)
 VALUES ('$name', '$category', '$description', $price, $qty)");
 
     }

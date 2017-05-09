@@ -10,22 +10,30 @@ class Products
 
     static function get($product_type)
     {
-        return get_all("SELECT * FROM products LEFT JOIN product_types USING (product_type_id) WHERE product_type_id = $product_type");
+        return \R::getAll("SELECT * FROM product LEFT JOIN producttype USING (product_type_id) WHERE product_type_id = ?", [$product_type]);
     }
 
     static function getItem($id)
     {
-        return get_all("SELECT * FROM products WHERE product_id = $id");
+
+        return \R::load( 'product', $id );
+
+    }
+
+    static function getImages($product_id)
+    {
+        return \R::getRow("SELECT image_path FROM productthumb WHERE product_id = ?", [$product_id]);
     }
 
     static function getAll()
     {
-        return get_all("SELECT * FROM products LEFT JOIN product_types USING (product_type_id)");
+        return \R::getAll("SELECT * FROM product LEFT JOIN producttype USING (product_type_id)");
     }
 
     static function getAllProductTypes()
     {
-        return get_all("SELECT * FROM product_types");
+        return \R::getAll("SELECT * FROM producttype");
     }
+
 
 }
