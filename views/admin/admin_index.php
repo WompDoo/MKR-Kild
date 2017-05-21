@@ -95,7 +95,7 @@
                         </thead>
                         <tbody id="fbody">
                         <?php foreach ($products as $product): ?>
-                            <tr id="<?= $product['product_type'] ?>" data-id='<?= $product['product_id'] ?>'>
+                            <tr id="<?= $product['product_type'] ?>" data-id='<?= $product['id'] ?>'>
 
                                 <td>
                                     <?= $product['product_name'] ?>

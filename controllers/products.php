@@ -4,6 +4,8 @@ use \MKR\Products as P;
 class products extends Controller
 {
 
+    public $url;
+
     function index()
     {
 

@@ -47,38 +47,74 @@ $(document).ready(function () {
         $(this).addClass('active');
     });
 
-    //Shopping cart
+//Shopping cart
     $(".item_form").submit(function (e) {
         var form_data = $(this).serialize();
-        /* AJAX request  - controllers/cart.php */
+        /* AJAX request  - cart/addToCart */
         $.ajax({
-            url: $(this).attr('action'),
             type: "POST",
+            url: "cart/addToCart",
             dataType: "text",
             data: form_data,
             success: (function (data) {//if AJAX request if succesful
                 /* Empty the update info bar before calling it. Otherwise appended content will duplicate. */
                 $('#cart_update_info').empty();
                 /* append data/info to cart_update_info bar */
-                $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> Item added to the cart</div>").fadeIn('fast').delay(2000).fadeOut('fast');
+                $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> <p>Item added to the cart</p></div>").fadeIn('fast').delay(2000).fadeOut('fast');
                 /* If shopping cart is still open, items will appear on it at the same time of adding them */
                 $("#shopping-cart").load(location.href + " #inCart");
-                $(".cartIcon").removeClass("hidden").addClass("animated fadeIn");
+                $(".cartIcon").removeClass("hidden");
                 //var itemsInCart = $("#items_in_shopping_cart").val();
-                var n = $("#items_in_shopping_cart").data("qty");
+                var n = $("#items_in_shopping_cart").data("data-qty");
                 $("#items_in_shopping_cart").html(n + 1);
             })
         })
         e.preventDefault();
     });
 
-    /*$.post("admin.php/addStock", {
-     siia_mingi_id: 'blablabla',
-     siia_näiteks_tekst: $('.tekstiväli').val()
-     });*/
+    /* Remove item */
+    $(document).on("click", ".btnRemoveAction", function (e) {
+        var id = $(this).parents("tr").attr("data-id");
+        $.ajax({
+            type: "POST",
+            url: "cart/removeFromCart",
+            data: {id: id},
+            dataType: 'text',
+            success: function (data) {
+                console.log(id);
+                $("#shopping-cart").load(location.href + " #shopping-cart-refresh");
+            }
+        });
+    });
 
+    //Empty cart
+    $("a#btnEmpty").on("click", function () {
+        if (confirm("Are you sure you want to empty your shopping cart?") == true) {
+            $.ajax({
+                type: "GET",
+                url: "cart/emptyCart"
+            })
+                .done(function () {
+                    location.reload();
+                });
 
-    //Add stock quantity on admin panel
+        }
+    });
+
+    //checkout
+    $(document).on("click", "#form_button", (function () {
+        $.ajax({
+            type: 'POST',
+            url: 'checkout/sendOrder',
+            data: $('#contact_form').serialize(),
+            dataType: 'text',
+            success: function (data) {
+                alert("The invoice has been sent to your e-mail!");
+            }
+        });
+    }));
+
+        //Add stock quantity on admin panel
     $(document).on("click", ".add", (function () {
         var id = $(this).parents("tr").attr("data-id");
         $.ajax({
@@ -141,8 +177,8 @@ $(document).ready(function () {
         $('tr[id^="Sketchbooks"]').hide();
         $('tr[id^="Furniture"]').hide();
         $('tr[id^="Woodturning"]').show();
-        $( "#2" ).addClass( "active" );
-        $( "#1, #3, #All" ).removeClass( "active" );
+        $("#2").addClass("active");
+        $("#1, #3, #All").removeClass("active");
 
     });
 
@@ -151,24 +187,24 @@ $(document).ready(function () {
         $('tr[id^="Sketchbooks"]').hide();
         $('tr[id^="Woodturning"]').hide();
         $('tr[id^="Furniture"]').show();
-        $( "#1" ).addClass( "active" );
-        $( "#2, #3, #All" ).removeClass( "active" );
+        $("#1").addClass("active");
+        $("#2, #3, #All").removeClass("active");
     });
 
     $("#3").click(function (event) {
         $('tr[id^="Woodturning"]').hide();
         $('tr[id^="Furniture"]').hide();
         $('tr[id^="Sketchbooks"]').show();
-        $( "#3" ).addClass( "active" );
-        $( "#1, #2, #All" ).removeClass( "active" );
+        $("#3").addClass("active");
+        $("#1, #2, #All").removeClass("active");
     });
 
     $("#All").click(function (event) {
         $('tr[id^="Woodturning"]').show();
         $('tr[id^="Furniture"]').show();
         $('tr[id^="Sketchbooks"]').show();
-        $( "#All" ).addClass( "active" );
-        $( "#1, #2, #3" ).removeClass( "active" );
+        $("#All").addClass("active");
+        $("#1, #2, #3").removeClass("active");
     });
 
 

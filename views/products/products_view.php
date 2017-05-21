@@ -26,28 +26,25 @@
     <div class="col-xs-6 col-md-6">
         <div class="col-md-11">
             <div id='cart_update_info'></div>
-            <!--     <h2></h2>
-                 <br>
-                 <text>
-                     </text>-->
             <text><?= $product['product_details'] ?></text>
             <br>
             <text><?= $product['product_qty'] ?> items left in stock</text>
-            <form class="item_form" method="post"
-                  action="cart.php?action=add&product_code=TC102">
+            <form method="post" name="productForm" class="item_form"">
+            <div><input type="hidden" name="id" value="<?= $product['id'] ?>" /></div>
                 <div><strong><?= $product['product_name'] ?></strong></div>
                 <div class="product-price"><?= $product['product_price'] ?>€</div>
-                <div><input type="text" name="quantity" value="1" size="2"/><input type="submit"
-                                                                                   value="Add to cart"
-                                                                                   class="btnAddAction"/>
-                </div>
+                <div><input type="text" name="quantity" value="1" size="2"/></div>
+                <input type="submit"
+                       value="Add to cart"
+                       class="btnAddAction"/>
             </form>
+
             <!--      <button type="button" class="btn btn-default">
 <span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Add to cart
 </button>-->
         </div>
         <div class="col-md-1">
-            <a href="furniture.php">
+            <a href="javascript:history.back(1);">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>
         </div>
