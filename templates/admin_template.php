@@ -45,7 +45,7 @@
         <i class="glyphicon glyphicon-cog"></i>
     </button>
 <?php endif; ?>
-<nav id="adminNavbar" class="navbar navbar-default navbar-static-top topbar" role="admin">
+<nav id="adminNavbar" class="navbar navbar-default navbar-fixed-top topbar" role="admin">
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -100,6 +100,22 @@
                             Save
                         </a>
                     </button>
+                    <button data-toggle="modal" data-target="#aboutModal" value="Background"
+                            class="navbar-text ui inverted red button">
+                        <a>
+                            Add section
+                        </a>
+                    </button>
+                    <button class="navbar-text ui inverted green button">
+                        <a href="admin/index">Dashboard</a>
+                    </button>
+                <?php elseif ($action == "contact" && $controller == "admin"): ?>
+                    <button data-toggle="modal" data-target="#contactModal" value="Background"
+                            class="navbar-text ui inverted red button">
+                        <a>
+                            Add contact
+                        </a>
+                    </button>
                     <button class="navbar-text ui inverted green button">
                         <a href="admin/index">Dashboard</a>
                     </button>
@@ -133,7 +149,9 @@
 </nav>
 <?php if ($action != "index"): ?>
     <!-- Fixed navbar -->
-    <nav id="navbarRegular" class="navbar navbar-inverse navbar-fixed-top navfix" role="navigation">
+    <nav id="navbarRegular"
+         class="navbar navbar-inverse <?php if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix"
+         role="navigation">
         <div class="container navfix">
             <div id="mobileNav">
                 <div class="wrapper">

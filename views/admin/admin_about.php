@@ -1,58 +1,94 @@
-<container id="myP">
-    <div class="row text-center">
-        <div class="col-md-8 col-md-offset-2" style="padding-left">
-            <h3>Aamesdfsfsn</h3>
-        </div>
-    </div>
-    <div class="col-md-2 col-md-offset-1 text-center" style="padding-right: 90px;">
-        <h2>YAYasdasd</h2>
-    </div>
-    <hr class="navsep">
-    <div class="row text-center">
-        <div class="col-md-6 col-md-offset-1 text-left" style="padding-left: 30px;">
-            <br>
-            <p>scdadvadvadv</p><p>(asdasda</p><p>asd</p><p>asda</p><p><br></p>
-        </div>
-        <div class="col-md-4">
-            <br>
-            <img src="uploads/placehold.png" alt="bla">
-        </div>
-    </div>
+<div id="aboutModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-    <br>
-    <br>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-modal">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong>New section</strong></div>
+                        <div class="panel-body">
 
-    <div class="col-md-2 col-md-offset-9 text-center" style="padding-left: 50px;">
-        <h2>Elu on ilus</h2>
-    </div>
-    <hr class="navsep">
-    <div class="row text-center">
-        <div class="col-md-4" style="padding-left: 145px;">
-            <br>
-            <img src="uploads/placehold.png" alt="bla">
+                            <!-- Standard Form -->
+                            <form id="newSection" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="heading" name="heading"
+                                           placeholder="Heading" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" type="textarea" id="text" name="text"
+                                              placeholder="section text" maxlength="140" rows="7"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-default createSection">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="col-md-6 col-md-offset-1 text-right" style="padding-right: 70px">
-            <br>
-            <p>
-                Wonderful</p>
-            <p>Hooman</p>
-            <p>Being</p>
-        </div>
+
     </div>
+</div>
 
-    <br>
-    <br>
+<container id="myP-dad">
+    <div id="myP">
+        <?php foreach ($description as $descript): ?>
+            <div class="col-md-8 col-md-offset-2" style="padding-left">
+                <h3 id="description"><?= $descript['description'] ?></h3>
+            </div>
+        <?php endforeach ?>
+        <?php foreach ($about as $abouttext): ?>
+            <?php if ($abouttext['about_id'] % 2 != 0): ?>
+                <div class="about-section" data-id="<?= $abouttext['about_id'] ?>">
+                    <div class="row text-center">
+                        <div class="col-md-8 col-md-offset-2" style="padding-left">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-md-offset-1 text-center" style="padding-right: 75px;">
+                        <h2 class="about-heading"><?= $abouttext['heading'] ?></h2>
+                    </div>
+                    <hr class="navsep">
+                    <div class="row text-center">
+                        <div class="col-md-6 col-md-offset-1 text-left" style="padding-left: 30px;">
+                            <p class="about-description"><?= $abouttext['text'] ?></p>
+                        </div>
+                        <div class="col-md-4">
+                            <br>
+                            <img src="uploads/<?= $abouttext['picture'] ?>" alt="bla">
+                        </div>
+                        <a class="ui negative inverted button text-right rmvSection "><em class="glyphicon
+                                                                                                    glyphicon-remove"></em></a>
+                    </div>
+                </div>
+                <br>
+            <?php else: ?>
+                <div class="about-section" data-id="<?= $abouttext['about_id'] ?>">
+                    <div class="row text-center">
+                        <div class="col-md-8 col-md-offset-2">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-md-offset-8 text-right" style="padding-right: 4px;">
+                        <h2 class="about-heading"><?= $abouttext['heading'] ?></h2>
+                    </div>
+                    <hr class="navsep">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <br>
+                            <img src="uploads/<?= $abouttext['picture'] ?>" alt="bla">
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <p class="about-description"><?= $abouttext['text'] ?></p>
+                        </div>
+                        <a class="ui negative inverted button text-right rmvSection "><em class="glyphicon
+                                                                                                    glyphicon-remove"></em></a>
+                    </div>
+                </div>
+            <?php endif; ?>
 
-    <div class="col-md-2 col-md-offset-1 text-center" style="padding-right: 90px;">
-        <h2>Ma olen!</h2>
+        <?php endforeach; ?>
     </div>
-    <hr class="navsep">
-    <div class="row text-center">
-        <div class="col-md-6 col-md-offset-1 text-left" style="padding-left: 30px;">
-            <br>Tubli</div>
-        <div class="col-md-4">
-
-            <img src="uploads/placehold.png" alt="bla">
-        </div>
-    </div>';
 </container>
+

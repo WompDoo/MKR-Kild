@@ -140,7 +140,7 @@
 
     $('#btnGeneratePasswordHash').on('click', function (e) {
 
-        $.post('halo/generate_password_hash', {password: this.value}, function (res) {
+        $.post('halo/generate_password_hash', {password: $('input[name="password"]').val()}, function (res) {
             $('#txtHash').html(res);
             $('#divHash').slideDown();
 

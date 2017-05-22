@@ -3,6 +3,7 @@
 namespace Halo;
 
 use \MKR\Products;
+use \MKR\About;
 
 
 class admin extends Controller
@@ -21,21 +22,21 @@ class admin extends Controller
     function ajax_addStock()
     {
         $id = $_POST['id'];
-        \R::exec("UPDATE product SET product_qty = product_qty + 1 WHERE product_id = '$id'");
+        \R::exec("UPDATE product SET product_qty = product_qty + 1 WHERE id = '$id'");
 
     }
 
     function ajax_rmvStock()
     {
         $id = $_POST['id'];
-        \R::exec("UPDATE product SET product_qty = product_qty - 1 WHERE product_id = '$id' AND product_qty > 0");
+        \R::exec("UPDATE product SET product_qty = product_qty - 1 WHERE id = '$id' AND product_qty > 0");
 
     }
 
     function ajax_destroyStock()
     {
         $id = $_POST['id'];
-        \R::exec("DELETE FROM product WHERE product_id = '$id'");
+        \R::exec("DELETE FROM product WHERE id = '$id'");
 
     }
 
@@ -103,11 +104,32 @@ VALUES ('$name', '$category', '$description', $price, $qty)");
 
     function about()
     {
-
+        $this->about = About::getAbout();
+        $this->description = About::getDescription();
     }
 
     function contact()
     {
+        $this->contact = About::getContact();
+    }
+
+    function ajax_addContact()
+    {
+
+        $name = $_POST["contactName"];
+        $description = $_POST["description"];
+        //$picture = $_POST["picture"];
+
+
+        \R::exec("INSERT INTO contact (name, description)
+VALUES ('$name', '$description')");
+
+    }
+
+    function ajax_rmvContact()
+    {
+        $id = $_POST['id'];
+        \R::exec("DELETE FROM contact WHERE contact_id = '$id'");
 
     }
 
@@ -116,6 +138,34 @@ VALUES ('$name', '$category', '$description', $price, $qty)");
         session_destroy();
         header('Location: ' . BASE_URL);
         exit();
+    }
+
+    function updateAbout()
+    {
+        $desc = $_POST['n1'];
+        \R::exec("UPDATE description SET description ='$desc' WHERE description.id = 1;");
+        exit();
+    }
+
+    function ajax_addSection()
+    {
+
+        $heading = $_POST["heading"];
+        $text = $_POST["text"];
+        $picture = $_POST["picture"];
+
+
+        \R::exec("INSERT INTO about (heading, text, picture)
+VALUES ('$heading', '$text', '$picture')");
+
+
+    }
+
+    function ajax_rmvSection()
+    {
+        $id = $_POST['id'];
+        \R::exec("DELETE FROM about WHERE about_id = '$id'");
+
     }
 
 }

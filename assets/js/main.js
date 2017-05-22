@@ -87,6 +87,7 @@ $(document).ready(function () {
             data: {id: id},
             dataType: 'text',
             success: function (data) {
+                console.log("tere", id);
                 $("#product-dad").load(location.href + " #product");
             }
         });
@@ -136,6 +137,63 @@ $(document).ready(function () {
             }
         });
     }));
+
+
+    $(document).on("click", ".createSection", (function () {
+        $.ajax({
+            type: 'POST',
+            url: 'admin/addSection',
+            data: $('#newSection').serialize(),
+            dataType: 'text',
+            success: function (data) {
+                $("#myP-dad").load(location.href + " #myP");
+
+            }
+        });
+    }));
+
+    $(document).on("click", ".createContact", (function () {
+        $.ajax({
+            type: 'POST',
+            url: 'admin/addContact',
+            data: $('#newContact').serialize(),
+            dataType: 'text',
+            success: function (data) {
+                console.log(data);
+                $("#myP-dad").load(location.href + " #myP");
+
+            }
+        });
+    }));
+
+    $(document).on("click", ".rmvSection", (function () {
+        var id = $(this).parents(".about-section").attr("data-id");
+        $.ajax({
+            type: 'POST',
+            url: 'admin/rmvSection',
+            data: {id: id},
+            dataType: 'text',
+            success: function (data) {
+                $("#myP-dad").load(location.href + " #myP");
+
+            }
+        });
+    }));
+
+    $(document).on("click", ".rmvContact", (function () {
+        var id = $(this).parents("#contact").attr("data-id");
+        $.ajax({
+            type: 'POST',
+            url: 'admin/rmvContact',
+            data: {id: id},
+            dataType: 'text',
+            success: function (data) {
+                $("#myP-dad").load(location.href + " #myP");
+
+            }
+        });
+    }));
+
 
     $("#2").click(function (event) {
         $('tr[id^="Sketchbooks"]').hide();
@@ -231,23 +289,48 @@ $(document).ready(function () {
         document.getElementById("navbarRegular").style.paddingTop = "50px";
     });
 
+
+
+
 //About page edit coded
     $("#edit").click(function (event) {
         $("#edit").hide("slow");
         $("#save").show("slow");
-        document.getElementById("myP").contentEditable = true;
+        var h3 = document.getElementById("description");
+        var input = $('<input>').val($(h3).text());
+
+        $(h3).after(input);
+        $(h3).hide();
+
+        input.on('blur', function() {
+            $(h3).text(input.val());
+            $(h3).show();
+            input.hide();
+        });
+        $( ".about-section" ).each(function() {
+            var heading = document.getElementsByClassName("about-heading");
+            if ($(this).data("id") == 1) {
+                console.log($(this).data("id"));
+
+            }
+        });
+
     });
-    var theContent = $('#myP');
+
     $("#save").click(function (event) {
-        $("#save").hide("slow");
-        $(".hello").empty();
-        $("#edit").show("slow");
-        document.getElementById("myP").contentEditable = false;
-        var editedContent = theContent.html();
-        var a = localStorage.newContent = editedContent;
-        $.post('./../controllers/editPage.php', 'val=' + a, function (response) {
+        $("#save").hide("fast");
+        $("#edit").show("fast");
+        var h3 = document.getElementById("description");
+        $.ajax({
+            type: 'POST',
+            url: 'admin/updateAbout',
+            data: { n1: h3.textContent },
+            dataType: 'text',
+            success: function (data) {
+            }
         });
     });
+
 // Code for showing modal
     $("#showModal").click(function (event) {
         $("#showModal").hide("slow");

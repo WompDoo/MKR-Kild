@@ -130,7 +130,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `is_admin`, `password`, `email`, `deleted`) VALUES
-(1, 'admin', 0, '$2y$10$MY/DmfN2mf19qMDW6ydOiuHO67JEmzrL5wEyaoGo1U4laBtmW0v72', 'admin@example.com', 0);
+(1, 'admin', 1, '$2y$10$3iPUP7nRWBdoT8jcHSg06eEIOxmQihcr5WGOGOBCbDwr1DCzvt16a', 'admin@example.com', 0);
 
 --
 -- Indeksid tõmmistatud tabelitele
