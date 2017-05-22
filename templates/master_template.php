@@ -32,7 +32,9 @@
 <body>
 
 <!-- Fixed navbar -->
-<nav id="navbarRegular" class="navbar navbar-inverse <?php if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix" role="navigation">
+<nav id="navbarRegular"
+     class="navbar navbar-inverse <?php if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix"
+     role="navigation">
     <div class="container navfix">
         <div id="mobileNav">
             <div class="wrapper">
@@ -92,10 +94,28 @@
                         </li>
                     </ul>
                 </div>
-                <a class="cartIcon hidden" href="cart.php" style="position: relative">
+                <a class="<?php
+                if (isset ($_SESSION['cart_item'])) {
+                    if (count($_SESSION['cart_item']) > 0) {
+                        echo "cartIcon";
+                    } else {
+                        echo "hidden";
+                    }
+                } else {
+                    echo "hidden";
+                }
+                ?>" href="cart" style="position: relative">
                     <img src="uploads/shoppingcart.png" width="35" height="35">
 
-                    <span id="items_in_shopping_cart" data-qty="0">                    </span>
+                    <span id="items_in_shopping_cart" data-qty="<?php
+                    if (isset($_SESSION['cart_item'])) {
+                        echo count($_SESSION['cart_item']);
+                    } else {
+                        echo 0;
+                    } ?>"><?php
+                        if (isset($_SESSION['cart_item'])) {
+                            echo count($_SESSION['cart_item']);
+                        } ?></span>
                 </a>
             </div>
 
@@ -129,9 +149,9 @@
 </nav>
 
 
-    <!-- Main component for a primary marketing message or call to action -->
-    <?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>
-    <?php @require "views/$controller/{$controller}_$action.php"; ?>
+<!-- Main component for a primary marketing message or call to action -->
+<?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>
+<?php @require "views/$controller/{$controller}_$action.php"; ?>
 
 <!-- /container -->
 

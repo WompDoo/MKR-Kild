@@ -35,7 +35,7 @@ body {
 }
 
 #shopping-cart {
-    margin-top: 43vmin;
+    margin-top: 4vmin;
 }
 
 #btnEmpty {
@@ -220,6 +220,7 @@ body {
     visibility: hidden;
     margin: 15px 0 0;
 }
+
 
 @media only screen and (max-width: 640px) {
 
