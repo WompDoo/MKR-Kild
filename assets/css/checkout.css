@@ -28,6 +28,34 @@ textarea {
     overflow: auto;
 }
 
+#questionForm {
+    margin: 15px 0 0 20px;
+}
+
+#contactMsg {
+    height: 90px;
+}
+
+#submitBtn {
+    padding: 10px 30px;
+    background: none;
+    border: solid 2px #474544;
+    color: #474544;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 0.875em;
+    font-weight: bold;
+    outline: none;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    margin-bottom: 1.85em;
+}
+
 #container {
     border: solid 3px #474544;
     max-width: 768px;
@@ -35,7 +63,7 @@ textarea {
     position: relative;
 }
 
-form {
+#contact_form {
     padding: 37.5px;
     margin: 50px 0;
 }
@@ -83,6 +111,8 @@ input[type='text'], [type='email'], select, textarea {
 input[type='text']:focus, [type='email']:focus, textarea:focus {
     outline: none;
     padding: 0 0 0.875em 0;
+    border-color: #EFEFEF;
+    outline: 0;
 }
 
 
@@ -126,7 +156,7 @@ input[type='text']:focus, [type='email']:focus, textarea:focus {
     width: 80%;
 }
 
-textarea {
+#message_input {
     line-height: 150%;
     height: 150px;
     resize: none;
@@ -171,13 +201,9 @@ textarea {
     margin-bottom: 1.85em;
 }
 
-#form_button:hover {
+#form_button:hover, #submitBtn:hover {
     background: #474544;
     color: #F2F3EB;
-}
-
-#success_message{
-    display: none;
 }
 
 @media screen and (max-width: 768px) {

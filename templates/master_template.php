@@ -4,14 +4,18 @@
     <base href="<?= BASE_URL ?>">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <meta name="description"
+          content="Three friends who share a passion for the wood. With this material,
+           we carry out all our ideas - from small details to furniture.
+            If you find something interesting on our site or want something made
+             according to your own design, please contact us and let's carry out your idea.">
+    <meta name="keywords" content="MKR, MKR Kild, woodturning, furniture, sketchbooks, wooden products, handmade">
 
     <title><?= PROJECT_NAME ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/formValidation.min.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
@@ -33,7 +37,8 @@
 
 <!-- Fixed navbar -->
 <nav id="navbarRegular"
-     class="navbar navbar-inverse <?php if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix"
+     class="navbar navbar-inverse <?php
+     if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix"
      role="navigation">
     <div class="container navfix">
         <div id="mobileNav">
@@ -41,10 +46,13 @@
                 <nav class="mobileNav">
                     <ul class="nav text-center">
                         <li>
-                            <a href="./">Home</a>
+                            <a href="./" class="<?php
+                            if ($controller == "home"): ?>active<?php endif; ?>">Home</a>
                         </li>
-                        <li class="active">
-                            <a id="Furniture" href="furniture">Furniture</a>
+
+                        <li>
+                            <a id="Furniture" href="furniture"
+                               class="<?= $controller == 'furniture' ? 'active' : '' ?>">Furniture</a>
                         </li>
                         <li>
                             <a id="Woodturning" href="woodturning">Woodturning</a>
@@ -154,7 +162,51 @@
 <?php @require "views/$controller/{$controller}_$action.php"; ?>
 
 <!-- /container -->
-
+<?php
+if ($controller == "home"): ?>
+    <footer class="footer">
+        <div class="row">
+            <div class="group-social col-md-4 col-md-offset-5 text-center">
+                <div class="col-xs-6 col-md-2">
+                    <a href="https://www.facebook.com/MKRKILD/">
+                        <img src="./uploads/facebook.png" width="30" height="30"/>
+                    </a>
+                </div>
+                <div class="socialborder col-xs-6 col-md-2">
+                    <a href="#">
+                        <img src="./uploads/instagram.png" width="28" height="28"/>
+                    </a>
+                </div>
+                <div class="socialborder col-xs-6 col-md-2">
+                    <a href="#">
+                        <img src="./uploads/google.png" width="33" height="25"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer> <?php endif; ?>
+<div class="footsep"></div>
+<footer class="footer2">
+    <div class="row">
+        <div class="group-social2 col-md-4 col-md-offset-5 text-center">
+            <div class="col-xs-6 col-md-2">
+                <a href="https://www.facebook.com/MKRKILD/">
+                    <img src="./uploads/facebook.png" width="30" height="30"/>
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-2 socialborder">
+                <a href="#">
+                    <img src="./uploads/instagram.png" width="28" height="28"/>
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-2 socialborder">
+                <a href="#">
+                    <img src="./uploads/google.png" width="33" height="25"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
@@ -163,5 +215,7 @@
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/semantic.min.js"></script>
+<script src="assets/js/formValidation.min.js"></script>
+<script src="assets/js/bootstrapForm.min.js"></script>
 </body>
 </html>

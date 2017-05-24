@@ -43,15 +43,18 @@ class Cart extends Controller
 
     function ajax_removeFromCart()
     {
-
-        if (!empty($_SESSION["cart_item"])) {
-            foreach ($_SESSION["cart_item"] as $k => $v) {
-                if ($_POST["id"] == $k)
-                    unset($_SESSION["cart_item"][$k]);
-                if (empty($_SESSION["cart_item"]))
-                    unset($_SESSION["cart_item"]);
+        foreach ($_SESSION['cart_item'] as $key=>$cartItem) {
+            $rem = $_POST['id'];
+            if ($cartItem["id"] == $rem) {
+                unset($_SESSION['cart_item'][$key]);
+            } if(empty($_SESSION['cart_item'])) {
+                unset($_SESSION['cart_item']);
             }
+
         }
+
+        session_write_close();
+
     }
 
     function ajax_emptyCart()
