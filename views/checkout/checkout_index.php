@@ -34,18 +34,21 @@
             </div>
             <div class="address col-md-10">
                 <label for="address"></label>
-                <input type="text" placeholder="My address is" name="address" id="address_input" required>
+                <input type="text" placeholder="Send package to" name="address" id="address_input" required>
             </div>
             <!-- radio checks -->
             <div class="delivery col-md-10">
+                (Pay shipping on package arrival)
                 <div class="radio">
                     <label>
-                        <input type="radio" name="delivery" value="smartpost"/>Send to Smartpost
+                        <input type="radio" name="delivery" value="smartpost"/>Send to Smartpost<br/>
+                        <a href="http://uus.smartpost.ee/pakiautomaatide-asukohad">List of Smartpost package machines</a>
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="delivery" value="Omniva"/>Send to Omniva
+                        <input type="radio" name="delivery" value="Omniva"/>Send to Omniva<br/>
+                        <a href="https://www.omniva.ee/era/kaart/asukohad">List of Omniva package machines</a>
                     </label>
                 </div>
                 <div class="radio">
@@ -62,6 +65,7 @@
                     <label>
                         <input type="radio" name="delivery" value="pick it up"/>I'll pick it up myself
                     </label>
+                    (Free shipping!)
                 </div>
             </div>
 

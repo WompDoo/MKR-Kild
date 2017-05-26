@@ -99,7 +99,6 @@ $(document).ready(function () {
                 .done(function () {
                     location.reload();
                 });
-
         }
     });
 
@@ -116,7 +115,125 @@ $(document).ready(function () {
         });
     }));
 
-        //Add stock quantity on admin panel
+   //Checkout form validation
+    $('#contact_form').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        err: {
+            container: 'tooltip'
+        },
+        fields: {
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please insert your name'
+                    },
+                    regexp: {
+                        regexp: /^[a-zõäöüA-ZÕÄÖÜ/ -]+$/,
+                        message: 'Name is not valid'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            telephone: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please insert your phone number'
+                    },
+                    regexp: {
+                        regexp: /^[0-9\ +]+$/,
+                        message: 'Number is not valid'
+                    }
+
+                }
+            },
+            address: {
+                validators: {
+                    notEempty: {
+                        message: 'Please insert address'
+                    }
+                }
+            },
+            delivery: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please choose delivery method'
+                    }
+                }
+            }
+        }
+    });
+
+    //contact form
+    $(document).on("click", "#submitBtn", (function () {
+        $.ajax({
+            type: 'POST',
+            url: 'contact/sendMail',
+            data: $('#questionForm').serialize(),
+            dataType: 'text',
+            success: function (data) {
+                alert("töötab või");
+            }
+        });
+    }));
+
+    //Contact form validator
+    $('#questionForm').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        err: {
+            container: 'tooltip'
+        },
+        fields: {
+            name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please insert your name'
+                    },
+                    regexp: {
+                        regexp: /^[a-zõäöüA-ZÕÄÖÜ/ -]+$/,
+                        message: 'Name is not valid'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            Qmessage: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please insert your message'
+                    }
+                }
+            }
+        }
+    });
+
+    //Add stock quantity on admin panel
     $(document).on("click", ".add", (function () {
         var id = $(this).parents("tr").attr("data-id");
         $.ajax({
@@ -141,8 +258,6 @@ $(document).ready(function () {
             dataType: 'text',
             success: function (data) {
                 $("#product-dad").load(location.href + " #product");
-                console.log(data);
-
             }
         });
     }));
@@ -337,8 +452,6 @@ $(document).ready(function () {
     });
 
 
-
-
 //About page edit coded
     $("#edit").click(function (event) {
         $("#edit").hide("slow");
@@ -349,12 +462,12 @@ $(document).ready(function () {
         $(h3).after(input);
         $(h3).hide();
 
-        input.on('blur', function() {
+        input.on('blur', function () {
             $(h3).text(input.val());
             $(h3).show();
             input.hide();
         });
-        $( ".about-section" ).each(function() {
+        $(".about-section").each(function () {
             var heading = document.getElementsByClassName("about-heading");
             if ($(this).data("id") == 1) {
                 console.log($(this).data("id"));
@@ -371,7 +484,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: 'admin/updateAbout',
-            data: { n1: h3.textContent },
+            data: {n1: h3.textContent},
             dataType: 'text',
             success: function (data) {
             }

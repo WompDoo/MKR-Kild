@@ -9,7 +9,7 @@
                     $item_total = 0;
                     ?>
                     <table id="inCart" cellpadding="10" cellspacing="1" class="table table-responsive">
-                        <a id="btnEmpty" href="javascript:void(0)">Empty
+                        <a id="btnEmpty" class="button">Empty
                             Cart</a>
                         <tbody>
                         <tr>
@@ -24,9 +24,7 @@
                                 <td>
                                     <strong><?php echo $item["product_name"]; ?></strong></td>
                                 <td><?php echo "€" . $item["product_price"] * $item["quantity"]; ?></td>
-                                <td><a
-                                            href='javascript:void(0)'
-                                            class="btnRemoveAction">Remove Item</a></td>
+                               <td><a class="btnRemoveAction">Remove Item</a></td>
                             </tr>
                             <?php
                             $item_total += ($item["product_price"] * $item["quantity"]);

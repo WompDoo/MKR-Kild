@@ -109,7 +109,12 @@ body {
 
 }
 
-.nav .navbar-lang > li > a.active {
+.navbar-nav>li.active {
+    color: red!important;
+    background: blue!important;
+}
+
+.nav .navbar-lang > li > .active {
     color: rgb(76, 50, 35);
     font-weight: bold;
 }
@@ -198,6 +203,10 @@ body {
     display: flex;
 }
 
+.group-social2 {
+    display: flex;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -225,7 +234,7 @@ body {
 @media only screen and (max-width: 640px) {
 
     body {
-        padding-top: 26% !important;
+
     }
 
     .shopping-cart {
@@ -250,7 +259,7 @@ body {
     }
 
     #mobileNav {
-        background-color: #ffffff;
+        background-color: rgba(239, 243, 243, 0.9);
         margin-top: 0;
     }
 
@@ -283,7 +292,7 @@ body {
         font-weight: bold;
         font-style: normal;
         padding: 5px 5px 5px;
-        background-color: #ffffff;
+        background-color: rgba(241, 241, 241, 0.8);
         border-bottom-style: solid;
         border-bottom: 1px;
         border-bottom-color: rgba(0, 0, 0, .1);
@@ -393,7 +402,7 @@ nav[role="admin"] .navbar-brand {
 }
 
 #navbarRegular {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 
 }
 
