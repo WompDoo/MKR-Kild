@@ -15,6 +15,7 @@ class admin extends Controller
     {
         $this->products = Products::getAll();
         $this->product_types = Products::getAllProductTypes();
+        $this->orders = Products::getOrders();
 
     }
 
@@ -197,7 +198,7 @@ VALUES ('$heading', '$text', '$picture')");
         $query = \R::getAll('SELECT * FROM about');
         $image = $query['picture'];
         var_dump($query);
-        $image = ('uploads/thumbs/' . $quersy);
+        //$image = ('uploads/thumbs/' . $quersy);
         unlink($image);
         \R::exec("DELETE FROM about WHERE about_id = '$id'");
 
@@ -216,6 +217,19 @@ VALUES ('$background')");
     function ajax_emptyBackground()
     {
         \R::exec("TRUNCATE TABLE homebackground");
+    }
+
+    function ajax_destroyOrder()
+    {
+        $id = $_POST['id'];
+        \R::exec("DELETE FROM `order` WHERE id = '$id'");
+    }
+
+    function ajax_orderDone()
+    {
+        $id = $_POST['id'];
+        $qty = $_POST['qty'];
+        \R::exec("UPDATE product SET product_qty ='$qty' WHERE id = '$id'");
     }
 
 }

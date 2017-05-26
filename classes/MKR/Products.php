@@ -35,5 +35,8 @@ class Products
         return \R::getAll("SELECT * FROM producttype");
     }
 
+    static function getOrders() {
+        return \R::getAll("SELECT `order`.id, `order`.name, `order`.email, `order`.phone, `order`.address, `order`.delivery, `order`.comments, product.product_name, product.product_price,orderitem.nitem, orderitem.total, `order`.total from `order` LEFT JOIN orderitem on `order`.id = orderitem.order_id LEFT JOIN product on orderitem.product_id=product.id WHERE `order`.id = orderitem.order_id");
+    }
 
 }
