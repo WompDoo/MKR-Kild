@@ -3,9 +3,11 @@
 
     <!-- Wrapper for Slides -->
     <div id="myCarousel-son" class="carousel-inner">
-        <div class="item active"><div class="fill img-responsive" style="background-image:url('./uploads/kandik2.jpg')"></div></div>
-        <div class="item"><div class="fill img-responsive" style="background-image:url('uploads/markmik2.jpg');"></div></div>
-        <div class="item"><div class="fill img-responsive" style="background-image:url('uploads/kausid1.jpg');"></div></div>
+        <?php foreach ($backgrounds as $background): ?>
+            <div class="item <?php if ($background['home_id'] == "1"): ?>active<?php endif; ?>">
+                <div class="fill" style="background-image:url('<?= $background['background'] ?>');"></div>
+            </div>
+        <?php endforeach ?>
     </div>
 
 </header>

@@ -31,43 +31,28 @@
 </div>
 
 
-<div class="col-md-4" style="    padding-left: 100px;
+<div id="myP-dad">
+    <div id="myP" class="col-md-4" style="    padding-left: 100px;
     border: 1px;
     border-style: solid;
     border-right: 0px;
     border-top: 0px;
     border-bottom: 0px;">
-    <div class="row">
-        <div class="col-md-4">
-            <img class="img-circle" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=259%C3%97375&w=100&h=100"
-                 alt="bla">
-        </div>
-        <div class="col-md-6">
-            <h4>Name</h4>
-            <text>A few words about the person</text>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-4">
-            <img class="img-circle" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=259%C3%97375&w=100&h=100"
-                 alt="bla">
-        </div>
-        <div class="col-md-6">
-            <h4>Name</h4>
-            <text>A few words about the person</text>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-4">
-            <img class="img-circle" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=259%C3%97375&w=100&h=100"
-                 alt="bla">
-        </div>
-        <div class="col-md-6">
-            <h4>Name</h4>
-            <p>A few words about the person</p>
-        </div>
+        <?php foreach ($contact as $contacts): ?>
+            <div id="contact" class="row" data-id="<?= $contacts['contact_id'] ?>">
+                <div class="col-md-4">
+                    <img class="img-circle img-responsive"
+                         src="uploads/contact/<?= $contacts['picture'] ?>"
+                         alt="bla">
+                </div>
+                <div class="col-md-6">
+                    <h4><?= $contacts['name'] ?></h4>
+                    <text><?= $contacts['description'] ?></text>
+                </div>
+            </div>
+            <br>
+        <?php endforeach ?>
+
     </div>
 </div>
 <br>
