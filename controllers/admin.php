@@ -219,4 +219,17 @@ VALUES ('$background')");
         \R::exec("TRUNCATE TABLE homebackground");
     }
 
+    function ajax_destroyOrder()
+    {
+        $id = $_POST['id'];
+        \R::exec("DELETE FROM `order` WHERE id = '$id'");
+    }
+
+    function ajax_orderDone()
+    {
+        $id = $_POST['id'];
+        $qty = $_POST['qty'];
+        \R::exec("UPDATE product SET product_qty ='$qty' WHERE id = '$id'");
+    }
+
 }

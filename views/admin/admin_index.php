@@ -61,7 +61,7 @@
                 <div class="col col-xs-6">
                     <div class="panel-heading">
                         <h4>
-                            Tooted
+                            <a class="ui positive inverted button" data-toggle="collapse" data-target="#ProductTableCollapse">Tooted</a>
                         </h4>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                     </button>
                 </div>
             </div>
-            <div class="panel panel-default panel-table">
+            <div id="ProductTableCollapse" class="panel panel-default panel-table collapse">
                 <?php foreach ($product_types as $product_type): ?>
                     <button class="ui inverted red button"
                             id="<?= $product_type['product_type_id'] ?>"
@@ -127,6 +127,88 @@
                         <?php endforeach ?>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="OrderTable" class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="panel panel-default">
+            <div class="row">
+                <div class="col col-xs-6">
+                    <div class="panel-heading">
+                        <h4>
+                            <a class="ui positive inverted button" data-toggle="collapse" data-target="#OrderTableCollapse">Tellimused</a>
+                        </h4>
+                    </div>
+                </div>
+                <div id="OrderTableCollapse" class="panel panel-default panel-table collapse">
+                    <div id="order-dad" class="panel-body">
+                        <table id="order" class="table table-striped table-bordered table-list">
+                            <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Delivery</th>
+                                <th>Comments</th>
+                                <th>Product name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Order Done</th>
+                                <th>Order delete</th>
+                            </tr>
+                            </thead>
+                            <tbody id="fbody">
+                            <?php foreach ($orders as $order): ?>
+                                <tr qty="<?= $order['nitem'] ?>" data-id='<?= $order['id'] ?>'>
+
+                                    <td>
+                                        <?= $order['name'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $order['email'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $order['phone'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $order['address'] ?>
+                                    </td>
+                                    <td >
+                                        <?= $order['delivery'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $order['comments'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $order['product_name'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $order['product_price'] ?>
+                                    </td>
+                                    <td class='qty'>
+                                        <?= $order['nitem'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $order['total'] ?>
+                                    </td>
+                                    <td align="center">
+                                        <a class="ui positive inverted button text-right orderDone"><em class="glyphicon
+                                                                                                    glyphicon-ok"></em></a>
+                                    </td>
+                                    <td align="center">
+                                        <a class="ui negative inverted button text-right destroyOrder"><em class="glyphicon
+                                                                                                        glyphicon-trash"></em></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

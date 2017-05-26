@@ -163,6 +163,37 @@ $(document).ready(function () {
         });
     }));
 
+    //Remove order completely
+    $(document).on("click", ".destroyOrder", (function () {
+        var id = $(this).parents("tr").attr("data-id");
+        $.ajax({
+            type: 'POST',
+            url: 'admin/destroyOrder',
+            data: {id: id},
+            dataType: 'text',
+            success: function (data) {
+                $("#order-dad").load(location.href + " #order");
+
+            }
+        });
+    }));
+
+    //Pressing order done
+    $(document).on("click", ".orderDone", (function () {
+        var id = $(this).parents("tr").attr("data-id");
+        var qty = $(this).parents("tr").attr("qty");
+        $.ajax({
+            type: 'POST',
+            url: 'admin/orderDone',
+            data: {id: id, qty: qty},
+            dataType: 'text',
+            success: function (data) {
+                $("#order-dad").load(location.href + " #order");
+            }
+        });
+    }));
+
+
     //Remove the item completely
     $(document).on("click", ".destroy", (function () {
         var id = $(this).parents("tr").attr("data-id");
@@ -172,7 +203,7 @@ $(document).ready(function () {
             data: {id: id},
             dataType: 'text',
             success: function (data) {
-                $("#product-dad").load(location.href + " #product");
+                $("#order-dad").load(location.href + " #order");
 
             }
         });
