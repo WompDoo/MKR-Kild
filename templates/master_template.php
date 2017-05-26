@@ -51,19 +51,19 @@
 
                         <li>
                             <a id="Furniture" href="furniture"
-                               class="<?= $controller == 'furniture' ? 'active' : '' ?>">Furniture</a>
+                               class="<?= $controller == 'furniture' ? 'active' : '' ?>"><?= __('Furniture') ?></a>
                         </li>
                         <li>
-                            <a class="<?= $controller == 'woodturning' ? 'active' : '' ?>" id="Woodturning" href="woodturning">Woodturning</a>
+                            <a class="<?= $controller == 'woodturning' ? 'active' : '' ?>" id="Woodturning" href="woodturning"><?= __('Woodturning') ?></a>
                         </li>
                         <li>
-                            <a class="<?= $controller == 'sketchbooks' ? 'active' : '' ?>" id="Sketchbooks" href="sketchbooks">Sketchbooks</a>
+                            <a class="<?= $controller == 'sketchbooks' ? 'active' : '' ?>" id="Sketchbooks" href="sketchbooks"><?= __('Sketchbooks') ?></a>
                         </li>
                         <li>
-                            <a class="<?= $controller == 'about' ? 'active' : '' ?>" href="about">About</a>
+                            <a class="<?= $controller == 'about' ? 'active' : '' ?>" href="about"><?= __('About') ?></a>
                         </li>
                         <li>
-                            <a class="<?= $controller == 'contact' ? 'active' : '' ?>" href="contact">Contact</a>
+                            <a class="<?= $controller == 'contact' ? 'active' : '' ?>" href="contact"><?= __('Contact') ?></a>
                         </li>
                         <li>
                             <a class="cartinfo <?php
@@ -111,15 +111,11 @@
                 <!--<div class="shopping-cart">-->
                 <div class="nav languages">
                     <ul class="nav navbar-lang">
-                        <li>
-                            <a href="?language=et_EE">EST</a>
-                        </li>
-                        <li>
-                            <a class="active" href="?language=en_GB">ENG</a>
-                        </li>
-                        <li>
-                            <a href="?language=ru_RU">RUS</a>
-                        </li>
+                        <?php foreach ($supported_languages as $language) : ?>
+                            <li>
+                                <a <?= $language == $_SESSION['language'] ? 'class="active"' : '' ?> href="<?= $_SERVER['REQUEST_URI'] . "?language=$language" ?>"><?= $language ?></a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <a class="cartinfo <?php
@@ -139,7 +135,9 @@
                     if (isset($_SESSION['cart_item'])) {
                         echo count($_SESSION['cart_item']);
                     } ?>"><?php
+                        if (isset($_SESSION['cart_item'])) {
                         echo count($_SESSION['cart_item']);
+                        }
                         ?></span>
                 </a>
             </div>
@@ -150,22 +148,22 @@
     <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="sticknav nav navbar-nav text-center">
             <li>
-                <a class="<?= $controller == 'home' ? 'active' : '' ?>" href="./">Home</a>
+                <a class="<?= $controller == 'home' ? 'active' : '' ?>" href="./"><?= __('Home') ?></a>
             </li>
             <li>
-                <a class="<?= $controller == 'furniture' ? 'active' : '' ?>" id="Furniture" href="furniture">Furniture</a>
+                <a class="<?= $controller == 'furniture' ? 'active' : '' ?>" id="Furniture" href="furniture"><?= __('Furniture') ?></a>
             </li>
             <li>
-                <a class="<?= $controller == 'woodturning' ? 'active' : '' ?>" id="Woodturning" href="woodturning">Woodturning</a>
+                <a class="<?= $controller == 'woodturning' ? 'active' : '' ?>" id="Woodturning" href="woodturning"><?= __('Woodturning') ?></a>
             </li>
             <li>
-                <a class="<?= $controller == 'sketchbooks' ? 'active' : '' ?>" id="Sketchbooks" href="sketchbooks">Sketchbooks</a>
+                <a class="<?= $controller == 'sketchbooks' ? 'active' : '' ?>" id="Sketchbooks" href="sketchbooks"><?= __('Sketchbooks') ?></a>
             </li>
             <li>
-                <a class="<?= $controller == 'about' ? 'active' : '' ?>" href="about">About</a>
+                <a class="<?= $controller == 'about' ? 'active' : '' ?>" href="about"><?= __('About') ?></a>
             </li>
             <li>
-                <a class="<?= $controller == 'contact' ? 'active' : '' ?>" href="contact">Contact</a>
+                <a class="<?= $controller == 'contact' ? 'active' : '' ?>" href="contact"><?= __('Contact') ?></a>
             </li>
         </ul>
     </div>

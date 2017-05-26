@@ -80,7 +80,8 @@ body {
 }
 
 .navbar-lang {
-    margin-top: -11%;
+    margin-top: -9%;
+    text-transform: uppercase;
     display: flex;
     float: right;
     margin-right: -30px;

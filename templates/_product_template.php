@@ -5,7 +5,7 @@
             <a href='products/<?= $product['id'] ?>'>
                 <img class='img-responsive productimg' src='uploads/<?= $product['product_image'] ?>'
                      alt='<?= $product['product_name'] ?>'/>
-                <p><?= $product['product_name'] ?></p>
+                <p> <?= __($product['product_name']) ?></p>
             </a>
             </div><?php endforeach ?>
     </div>

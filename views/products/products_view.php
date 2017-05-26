@@ -26,17 +26,17 @@
 
     <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="col-md-6 col-md-offset-2">
-            <h4><?= $product['product_name'] ?></h4>
-            <h5><?= $product['product_details'] ?></h5>
+            <h4><?= __($product['product_name']) ?></h4>
+            <h5><?= __($product['product_details']) ?></h5>
             <br>
-            <text><?= $product['product_qty'] ?> items left in stock</text>
+            <text><?= $product['product_qty'] ?> <?=__('items left in stock')?></text>
             <form method="post" name="productForm" class="item_form"">
             <div><input type="hidden" name="id" value="<?= $product['id'] ?>" /></div>
                 <div><input type="hidden" value="<?= $product['product_name'] ?>"/></div>
                 <div class="product-price"><?= $product['product_price'] ?>€</div>
                 <input class="qtyInput"  type="number" name="quantity" value="1" size="2"/>
                 <input type="submit"
-                       value="Add to cart"
+                       value="<?= __('Add to cart')?>"
                        class="btnAddAction"/>
             </form>
             <div id='cart_update_info'></div>

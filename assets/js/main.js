@@ -68,7 +68,7 @@ $(document).ready(function () {
                 /* Empty the update info bar before calling it. Otherwise appended content will duplicate. */
                 $('#cart_update_info').empty();
                 /* append data/info to cart_update_info bar */
-                $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> <p>Item added to the cart</p></div>").fadeIn('fast').delay(2000).fadeOut('fast');
+                $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> <p>Item added to shopping cart</p></div>").fadeIn('fast').delay(2000).fadeOut('fast');
                 /* If shopping cart is still open, items will appear on it at the same time of adding them */
                 $("#shopping-cart").load(location.href + " #inCart");
                 $(".cartinfo").removeClass("hidden");
