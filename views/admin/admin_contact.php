@@ -96,4 +96,3 @@
 </div>
 <br>
 <!-- /.row -->
-<hr class="footsep">

@@ -1,12 +1,18 @@
 $(document).ready(function () {
 
-
+    // fixed on scroll
+    $(document).scroll(function() {
+        if ($(this).scrollTop() > $('#navbarRegular').height() ) {
+            $('.sticknav').addClass('fixed-me');
+        } else {
+            $('.sticknav').removeClass('fixed-me text-center');
+        }
+    });
 
     $('#myCarousel').carousel({
         interval: 5000,
         pause: "false"
-    })
-
+    });
 
     //Mobile menu
     $(function () {
@@ -65,9 +71,9 @@ $(document).ready(function () {
                 $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> <p>Item added to the cart</p></div>").fadeIn('fast').delay(2000).fadeOut('fast');
                 /* If shopping cart is still open, items will appear on it at the same time of adding them */
                 $("#shopping-cart").load(location.href + " #inCart");
-                $(".cartIcon").removeClass("hidden");
+                $(".cartinfo").removeClass("hidden");
                 //var itemsInCart = $("#items_in_shopping_cart").val();
-                var n = $("#items_in_shopping_cart").data("data-qty");
+                var n = $("#items_in_shopping_cart").data("qty");
                 $("#items_in_shopping_cart").html(n + 1);
             })
         })
@@ -83,7 +89,6 @@ $(document).ready(function () {
             data: {id: id},
             dataType: 'text',
             success: function (data) {
-                console.log(id);
                 $("#shopping-cart").load(location.href + " #shopping-cart-refresh");
             }
         });
@@ -97,6 +102,7 @@ $(document).ready(function () {
                 url: "cart/emptyCart"
             })
                 .done(function () {
+                    $(".cartinfo").addClass("hidden");
                     location.reload();
                 });
         }
@@ -111,6 +117,19 @@ $(document).ready(function () {
             dataType: 'text',
             success: function (data) {
                 alert("The invoice has been sent to your e-mail!");
+            }
+        });
+    }));
+
+    //contact form
+    $(document).on("click", "#submitBtn", (function () {
+        $.ajax({
+            type: 'POST',
+            url: 'contact/sendMail',
+            data: $('#questionForm').serialize(),
+            dataType: 'text',
+            success: function (data) {
+                alert("Your question has been sent!");
             }
         });
     }));
@@ -308,18 +327,6 @@ $(document).ready(function () {
         "color": "#C0C0C0"
     });
 
-    /*  $(document).on("click", ".btnAddAction", (function () {
-     $.ajax({
-     type: 'POST',
-     url: './controllers/cart.php',
-     data: $('.item_form').serialize(),
-     dataType: 'text',
-     success: function (data) {
-     $("#shopping-cart").load(location.href + " #inCart");
-     //window.location = window.location.href;
-     }
-     });
-     }));*/
 
     //Handle admin nav animations
     $("#hideNav").click(function (event) {

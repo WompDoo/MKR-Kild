@@ -1,6 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 html,
 body {
     height: 100%;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+body {
     overflow-x: hidden;
 }
 
@@ -51,11 +57,7 @@ body {
 }
 
 .productimg {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
+    display: inline-flex;
 }
 
 .footsep {
@@ -77,12 +79,6 @@ body {
     text-align: center;
 }
 
-/*.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
-    background-color: rgba(220, 220, 220, .8);
-    border: none;
-    font-weight: bold;
-}
-*/
 .navbar-lang {
     margin-top: -11%;
     display: flex;
@@ -90,9 +86,6 @@ body {
     margin-right: -30px;
 }
 
-.nav .navbar-lang > li {
-    /*background-color: rgba(76, 50, 35, .6);*/
-}
 
 .nav .navbar-lang > li > a {
     border-width: 3px;
@@ -100,23 +93,48 @@ body {
     background: none;
     padding: 10px 10px;
     font-size: 10px;
+}
 
+ul {
+    list-style: none;
+}
+
+.fixed-me{
+    transition: all 1s ;
+}
+
+.fixed-me{
+    background-color:rgba(238,238,238, .9)!important;
+    padding: 0px  !important;
+    margin-bottom: 5px;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1024;
+    width: 100%;
+}
+
+.fixed-me li a {
+    float: none;
+    display: inline-block
+}
+
+.fixed-me.navbar-nav>li {
+    float: none;
+    display:inline-block;
+}
+
+.sticknav {
+    transition: all 1s ;
 }
 
 .nav .navbar-lang > li > a:hover {
-    font-weight: bold;
-    color: rgb(76, 50, 35);
-
-}
-
-.navbar-nav>li.active {
-    color: red!important;
-    background: blue!important;
+    color: #9c6f04;
 }
 
 .nav .navbar-lang > li > .active {
-    color: rgb(76, 50, 35);
-    font-weight: bold;
+    color: #9c6f04;
 }
 
 .nav .lang > li > a {
@@ -148,13 +166,14 @@ body {
 }
 
 .navbar-inverse .navbar-nav > li > a:hover {
-    color: black;
-    font-weight: bold;
+    color: #9c6f04;
 }
 
 .navbar-inverse .navbar-nav > li > a.active {
-    color: black;
-    font-weight: bold;
+    color: #9c6f04;
+}
+.customized a {
+    color: #231812;
 }
 
 #productSlider img {
@@ -230,7 +249,19 @@ body {
     margin: 15px 0 0;
 }
 
+.productThumbs {
+    display: inline-flex;
+}
 
+.customized {
+    margin-right: 35px;
+    margin-left: 35px;
+}
+@media (min-width: 992px) {
+    .productimg {
+        max-width: 330px;
+    }
+}
 @media only screen and (max-width: 640px) {
 
     body {
@@ -427,6 +458,18 @@ nav[role="admin"] .navbar-brand {
     background-color: black;
 }
 
+.btnAddAction, .checkoutButton {
+    color: black;
+    background: transparent;
+    border-radius: 0;
+    border: 1px solid black;
+}
+
+.checkoutButton:hover, .btnAddAction:hover {
+    background:black;
+    color: white;
+}
+
 .navbar-btn img {
     height: 30px;
     width: 30px;
@@ -463,6 +506,17 @@ nav[role="admin"] .navbar-brand {
 
 .thumbnail {
     width: 150px;
+    border: none;
+}
+
+.qtyInput {
+    border-radius: 3px;
+    border: 0.5px solid black;
+    width:10%;
+}
+
+.thumbnails {
+    display: inline-flex;
 }
 
 .navbar-inverse {

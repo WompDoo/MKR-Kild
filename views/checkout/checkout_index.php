@@ -79,7 +79,5 @@
             </div>
         </form><!-- // End form -->
     </div>
-
-    <hr class="footsep">
-
 </div>
+<script type="text/javascript" src="assets/js/validations.js"></script>

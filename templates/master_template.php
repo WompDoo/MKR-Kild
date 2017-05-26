@@ -35,10 +35,10 @@
 
 <body>
 
-<!-- Fixed navbar -->
+<!-- Navbar -->
 <nav id="navbarRegular"
      class="navbar navbar-inverse <?php
-     if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix"
+     if ($controller == "home"): ?> navbar-fixed-top <?php endif; ?> navfix"
      role="navigation">
     <div class="container navfix">
         <div id="mobileNav">
@@ -46,8 +46,7 @@
                 <nav class="mobileNav">
                     <ul class="nav text-center">
                         <li>
-                            <a href="./" class="<?php
-                            if ($controller == "home"): ?>active<?php endif; ?>">Home</a>
+                            <a class="<?= $controller == 'home' ? 'active' : '' ?>" href="./">Home</a>
                         </li>
 
                         <li>
@@ -55,28 +54,27 @@
                                class="<?= $controller == 'furniture' ? 'active' : '' ?>">Furniture</a>
                         </li>
                         <li>
-                            <a id="Woodturning" href="woodturning">Woodturning</a>
+                            <a class="<?= $controller == 'woodturning' ? 'active' : '' ?>" id="Woodturning" href="woodturning">Woodturning</a>
                         </li>
                         <li>
-                            <a id="Sketchbooks" href="sketchbooks">Sketchbooks</a>
+                            <a class="<?= $controller == 'sketchbooks' ? 'active' : '' ?>" id="Sketchbooks" href="sketchbooks">Sketchbooks</a>
                         </li>
                         <li>
-                            <a href="about">About</a>
+                            <a class="<?= $controller == 'about' ? 'active' : '' ?>" href="about">About</a>
                         </li>
                         <li>
-                            <a href="contact">Contact</a>
+                            <a class="<?= $controller == 'contact' ? 'active' : '' ?>" href="contact">Contact</a>
                         </li>
                         <ul class="nav lang">
                             <li>
-                                <a href="#">ENG</a>
+                                <a href="?language=en_GB">ENG</a>
                             </li>
                             <li>
-                                <a class="lang-sep" href="#">EST</a>
+                                <a class="lang-sep" href="?language=et_EE">EST</a>
                             </li>
                             <li>
-                                <a class="lang-sep" href="#">RUS</a>
+                                <a class="lang-sep" href="?language=et_EE">RUS</a>
                             </li>
-                        </ul>
                     </ul>
                 </nav>
             </div>
@@ -92,17 +90,17 @@
                 <div class="nav languages">
                     <ul class="nav navbar-lang">
                         <li>
-                            <a href="#">EST</a>
+                            <a href="?language=et_EE">EST</a>
                         </li>
                         <li>
-                            <a class="active" href="#">ENG</a>
+                            <a class="active" href="?language=en_GB">ENG</a>
                         </li>
                         <li>
-                            <a href="#">RUS</a>
+                            <a href="?language=ru_RU">RUS</a>
                         </li>
                     </ul>
                 </div>
-                <a class="<?php
+                <a class="cartinfo <?php
                 if (isset ($_SESSION['cart_item'])) {
                     if (count($_SESSION['cart_item']) > 0) {
                         echo "cartIcon";
@@ -115,15 +113,12 @@
                 ?>" href="cart" style="position: relative">
                     <img src="uploads/shoppingcart.png" width="35" height="35">
 
-                    <span id="items_in_shopping_cart" data-qty="<?php
+                    <span id="items_in_shopping_cart" style="color:black" data-qty="<?php
                     if (isset($_SESSION['cart_item'])) {
                         echo count($_SESSION['cart_item']);
-                    } else {
-                        echo 0;
                     } ?>"><?php
-                        if (isset($_SESSION['cart_item'])) {
-                            echo count($_SESSION['cart_item']);
-                        } ?></span>
+                          echo count($_SESSION['cart_item']);
+                         ?></span>
                 </a>
             </div>
 
@@ -131,24 +126,24 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav text-center">
+        <ul class="sticknav nav navbar-nav text-center">
             <li>
-                <a href="./">Home</a>
+                <a class="<?= $controller == 'home' ? 'active' : '' ?>" href="./">Home</a>
             </li>
             <li>
-                <a id="Furniture" href="furniture">Furniture</a>
+                <a class="<?= $controller == 'furniture' ? 'active' : '' ?>" id="Furniture" href="furniture">Furniture</a>
             </li>
             <li>
-                <a id="Woodturning" href="woodturning">Woodturning</a>
+                <a class="<?= $controller == 'woodturning' ? 'active' : '' ?>" id="Woodturning" href="woodturning">Woodturning</a>
             </li>
             <li>
-                <a id="Sketchbooks" href="sketchbooks">Sketchbooks</a>
+                <a class="<?= $controller == 'sketchbooks' ? 'active' : '' ?>" id="Sketchbooks" href="sketchbooks">Sketchbooks</a>
             </li>
             <li>
-                <a href="about">About</a>
+                <a class="<?= $controller == 'about' ? 'active' : '' ?>" href="about">About</a>
             </li>
             <li>
-                <a href="contact">Contact</a>
+                <a class="<?= $controller == 'contact' ? 'active' : '' ?>" href="contact">Contact</a>
             </li>
         </ul>
     </div>
@@ -185,7 +180,9 @@ if ($controller == "home"): ?>
             </div>
         </div>
     </footer> <?php endif; ?>
-<div class="footsep"></div>
+<?php
+if ($controller != "home"): ?>
+<hr class="footsep"/>
 <footer class="footer2">
     <div class="row">
         <div class="group-social2 col-md-4 col-md-offset-5 text-center">
@@ -206,8 +203,7 @@ if ($controller == "home"): ?>
             </div>
         </div>
     </div>
-</footer>
-
+</footer><?php endif; ?>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

@@ -70,8 +70,7 @@
         </div>
     </div>
 </div>
-</div>
 <br>
 <!-- /.row -->
-<hr class="footsep">
+<script type="text/javascript" src="assets/js/validations.js"></script>
 

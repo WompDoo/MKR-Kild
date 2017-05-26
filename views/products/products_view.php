@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-xs-12 col-md-6" id="productSlider">
         <!-- Top part of the slider -->
-        <div class="col-sm-8 col-md-11 col-md-offset-1" id="carousel-bounding-box">
+        <div class="col-sm-8 col-md-10 col-md-offset-4" id="carousel-bounding-box">
             <div class="carousel slide" id="picCarousel" data-interval="false">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
@@ -25,41 +25,39 @@
     </div>
 
     <div class="col-xs-6 col-md-6">
-        <div class="col-md-11">
-            <div id='cart_update_info'></div>
-            <text><?= $product['product_details'] ?></text>
+        <div class="col-md-6 col-md-offset-2">
+            <h4><?= $product['product_name'] ?></h4>
+            <h5><?= $product['product_details'] ?></h5>
             <br>
             <text><?= $product['product_qty'] ?> items left in stock</text>
             <form method="post" name="productForm" class="item_form"">
             <div><input type="hidden" name="id" value="<?= $product['id'] ?>" /></div>
-                <div><strong><?= $product['product_name'] ?></strong></div>
+                <div><input type="hidden" value="<?= $product['product_name'] ?>"/></div>
                 <div class="product-price"><?= $product['product_price'] ?>€</div>
-                <div><input type="text" name="quantity" value="1" size="2"/></div>
+                <input class="qtyInput"  type="number" name="quantity" value="1" size="2"/>
                 <input type="submit"
                        value="Add to cart"
                        class="btnAddAction"/>
             </form>
+            <div id='cart_update_info'></div>
 
-            <!--      <button type="button" class="btn btn-default">
-<span class="glyphicon glyphicon glyphicon-shopping-cart"></span> Add to cart
-</button>-->
         </div>
         <div class="col-md-1">
             <a href="javascript:history.back(1);">
-                <span class="glyphicon glyphicon-remove"></span>
+               <img src="uploads/X.png" style="width:63%" />
             </a>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="hidden-xs col-md-6" id="slider-thumbs">
-        <div class="col-md-11 col-md-offset-1">
+    <div class="hidden-xs col-md-3 col-md-offset-1" id="slider-thumbs">
+        <div class="col-md-11 col-md-offset-2">
             <!-- Bottom switcher of slider -->
-            <ul class="hide-bullets">
+            <ul class="hide-bullets thumbnails">
                 <?php
                 $n = 0;
                 foreach ($product->ownProductthumbList as $image): ?>
-                    <li class='col-sm-2'>
+                    <li class='col-sm-3'>
                         <div class="thumbnail" id="carousel-selector-<?= $n++; ?>">
                             <img src="uploads/<?= $image->image_path ?>"></div>
                     </li>
