@@ -79,5 +79,5 @@
             </div>
         </form><!-- // End form -->
     </div>
-
 </div>
+<script type="text/javascript" src="assets/js/validations.js"></script>

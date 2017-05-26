@@ -9,7 +9,6 @@ $(document).ready(function () {
         }
     });
 
-
     $('#myCarousel').carousel({
         interval: 5000,
         pause: "false"
@@ -122,68 +121,6 @@ $(document).ready(function () {
         });
     }));
 
-   //Checkout form validation
-    $('#contact_form').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        err: {
-            container: 'tooltip'
-        },
-        fields: {
-            name: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please insert your name'
-                    },
-                    regexp: {
-                        regexp: /^[a-zõäöüA-ZÕÄÖÜ/ -]+$/,
-                        message: 'Name is not valid'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'The email address is required'
-                    },
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
-                    }
-                }
-            },
-            telephone: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please insert your phone number'
-                    },
-                    regexp: {
-                        regexp: /^[0-9\ +]+$/,
-                        message: 'Number is not valid'
-                    }
-
-                }
-            },
-            address: {
-                validators: {
-                    notEempty: {
-                        message: 'Please insert address'
-                    }
-                }
-            },
-            delivery: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please choose delivery method'
-                    }
-                }
-            }
-        }
-    });
-
     //contact form
     $(document).on("click", "#submitBtn", (function () {
         $.ajax({
@@ -192,53 +129,10 @@ $(document).ready(function () {
             data: $('#questionForm').serialize(),
             dataType: 'text',
             success: function (data) {
-                alert("töötab või");
+                alert("Your question has been sent!");
             }
         });
     }));
-
-    //Contact form validator
-    $('#questionForm').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        err: {
-            container: 'tooltip'
-        },
-        fields: {
-            name: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please insert your name'
-                    },
-                    regexp: {
-                        regexp: /^[a-zõäöüA-ZÕÄÖÜ/ -]+$/,
-                        message: 'Name is not valid'
-                    }
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'The email address is required'
-                    },
-                    emailAddress: {
-                        message: 'The input is not a valid email address'
-                    }
-                }
-            },
-            Qmessage: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please insert your message'
-                    }
-                }
-            }
-        }
-    });
 
     //Add stock quantity on admin panel
     $(document).on("click", ".add", (function () {
@@ -300,23 +194,32 @@ $(document).ready(function () {
 
 
     $(document).on("click", ".createSection", (function () {
+        var path = document.getElementById("picture").value;
+        var heading = document.getElementById("heading").value;
+        var text = document.getElementById("text").value;
+        var picture = path.replace(/^.*\\/, "");
         $.ajax({
             type: 'POST',
             url: 'admin/addSection',
-            data: $('#newSection').serialize(),
+            data: {heading:heading, text:text, picture: picture},
             dataType: 'text',
             success: function (data) {
                 $("#myP-dad").load(location.href + " #myP");
+                console.log(data);
 
             }
         });
     }));
 
     $(document).on("click", ".createContact", (function () {
+        var path = document.getElementById("pictureContact").value;
+        var contactName = document.getElementById("contactName").value;
+        var description = document.getElementById("description").value;
+        var picture = path.replace(/^.*\\/, "");
         $.ajax({
             type: 'POST',
             url: 'admin/addContact',
-            data: $('#newContact').serialize(),
+            data: {contactName:contactName, description:description, picture: picture},
             dataType: 'text',
             success: function (data) {
                 console.log(data);
@@ -424,18 +327,6 @@ $(document).ready(function () {
         "color": "#C0C0C0"
     });
 
-    /*  $(document).on("click", ".btnAddAction", (function () {
-     $.ajax({
-     type: 'POST',
-     url: './controllers/cart.php',
-     data: $('.item_form').serialize(),
-     dataType: 'text',
-     success: function (data) {
-     $("#shopping-cart").load(location.href + " #inCart");
-     //window.location = window.location.href;
-     }
-     });
-     }));*/
 
     //Handle admin nav animations
     $("#hideNav").click(function (event) {
@@ -507,16 +398,31 @@ $(document).ready(function () {
         });
     };
 // Change background on index page
+    //$('#myCarousel-son').children(":first").addClass("active");
     $('#changeBG').on('click', function () {
-        $("#myCarousel-son").empty();
         var value = $("select").data('picker');
         var selected = value.select[0].selectedOptions;
-        $(selected).each(function () {
-            var imagelink = this.value;
-            $('#myCarousel-son').prepend('<div class="item"><div class="fill" style="background-image:url(' + imagelink + ');"></div></div>');
-        });
-        $('#myCarousel-son').children(":first").addClass("active");
+        $.ajax ({
+            url: 'admin/emptyBackground',
+            success: function () {
+                $('#myCarousel-son').children(":first").addClass("active");
+                $(selected).each(function () {
+                    var imagelink = this.value;
+                    $.ajax ({
+                        url: 'admin/changeBackground',
+                        data: {background:imagelink},
+                        type: 'post',
+                        success: function (data) {
+                            $("#myCarousel").load(location.href + " #myCarousel-son");
+
+                        }
+                    })
+                });
+            }
+        })
+
     });
+
 // Upload images for index page
     $('.upload').on('click', function () {
         var file_data = $('#js-upload-files').prop('files')[0];
@@ -562,9 +468,42 @@ $(document).ready(function () {
     });
 
 
-    /* WE MIGHT NEED IT ON THE ADMIN PANEL
-     $(document).on("click", ".sidebar-toggle", function () {
-     $(".wrapper").toggleClass("toggled");
-     });
-     */
+    $('.createSection').on('click', function () {
+        var file_data = $('#picture').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        event.preventDefault();
+        $.ajax({
+            url: 'admin/uploadThumb', // point to server-side PHP script
+            dataType: 'text',  // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (data) {
+
+            }
+        });
+    })
+
+    $('.createContact').on('click', function () {
+        var file_data = $('#pictureContact').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        event.preventDefault();
+        $.ajax({
+            url: 'admin/uploadContact', // point to server-side PHP script
+            dataType: 'text',  // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (data) {
+
+            }
+        });
+    })
+
 });

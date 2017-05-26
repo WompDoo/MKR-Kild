@@ -70,7 +70,7 @@ VALUES ('$name', '$category', '$description', $price, $qty)");
 
     function home()
     {
-
+        $this->backgrounds = About::getBackground();
     }
 
     function getImages()
@@ -102,6 +102,36 @@ VALUES ('$name', '$category', '$description', $price, $qty)");
         exit ();
     }
 
+    function uploadThumb()
+    {
+        if (!file_exists('uploads/thumbs/')) {
+            mkdir('uploads/thumbs/', 0777, true);
+        }
+        $total = count($_FILES['file']['name']);
+        for ($i = 0; $i < $total; $i++) {
+            if (file_exists('uploads/thumbs/' . $_FILES['file']['name'])) {
+            } else {
+                move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/thumbs/' . $_FILES['file']['name']);
+            }
+        }
+        exit ();
+    }
+
+    function uploadContact()
+    {
+        if (!file_exists('uploads/contact/')) {
+            mkdir('uploads/contact/', 0777, true);
+        }
+        $total = count($_FILES['file']['name']);
+        for ($i = 0; $i < $total; $i++) {
+            if (file_exists('uploads/contact/' . $_FILES['file']['name'])) {
+            } else {
+                move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/contact/' . $_FILES['file']['name']);
+            }
+        }
+        exit ();
+    }
+
     function about()
     {
         $this->about = About::getAbout();
@@ -118,11 +148,11 @@ VALUES ('$name', '$category', '$description', $price, $qty)");
 
         $name = $_POST["contactName"];
         $description = $_POST["description"];
-        //$picture = $_POST["picture"];
+        $picture = $_POST["picture"];
 
 
-        \R::exec("INSERT INTO contact (name, description)
-VALUES ('$name', '$description')");
+        \R::exec("INSERT INTO contact (name, description, picture)
+VALUES ('$name', '$description', '$picture')");
 
     }
 
@@ -164,8 +194,28 @@ VALUES ('$heading', '$text', '$picture')");
     function ajax_rmvSection()
     {
         $id = $_POST['id'];
+        $query = \R::getAll('SELECT * FROM about');
+        $image = $query['picture'];
+        var_dump($query);
+        $image = ('uploads/thumbs/' . $quersy);
+        unlink($image);
         \R::exec("DELETE FROM about WHERE about_id = '$id'");
 
+
+    }
+
+    function ajax_changeBackground()
+    {
+        $background = $_POST['background'];
+        \R::exec("INSERT INTO homebackground (background)
+VALUES ('$background')");
+
+
+    }
+
+    function ajax_emptyBackground()
+    {
+        \R::exec("TRUNCATE TABLE homebackground");
     }
 
 }

@@ -19,6 +19,9 @@
                                     <textarea class="form-control" type="textarea" id="description" name="description"
                                               placeholder="Contact description" maxlength="140" rows="7"></textarea>
                                 </div>
+                                <div class="form-group">
+                                    <input type="file" name="picture" id="pictureContact">
+                                </div>
                                 <button type="submit" class="btn btn-default createContact">Add</button>
                             </form>
                         </div>
@@ -74,8 +77,8 @@
             <?php foreach ($contact as $contacts): ?>
                 <div id="contact" class="row" data-id="<?= $contacts['contact_id'] ?>">
                     <div class="col-md-4">
-                        <img class="img-circle"
-                             src="https://placeholdit.imgix.net/~text?txtsize=33&txt=259%C3%97375&w=100&h=100"
+                        <img class="img-circle img-responsive"
+                             src="uploads/contact/<?= $contacts['picture'] ?>"
                              alt="bla">
                     </div>
                     <div class="col-md-6">
