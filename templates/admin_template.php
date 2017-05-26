@@ -265,7 +265,6 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendor/components/bootstrap/js/bootstrap.min.js"></script>
-
 <script src="assets/js/main.js"></script>
 <script src="assets/js/semantic.min.js"></script>
 <script src="assets/js/image-picker.min.js"></script>

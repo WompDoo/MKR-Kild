@@ -74,7 +74,8 @@
             <div class="panel panel-default panel-table">
                 <?php foreach ($product_types as $product_type): ?>
                     <button class="ui inverted red button"
-                            id="<?= $product_type['product_type_id'] ?>" value="<?= $product_type['product_type'] ?>"><?= $product_type['product_type'] ?></button>
+                            id="<?= $product_type['product_type_id'] ?>"
+                            value="<?= $product_type['product_type'] ?>"><?= $product_type['product_type'] ?></button>
                 <?php endforeach ?>
                 <button class="ui inverted green button active"
                         id="All"
