@@ -1,8 +1,8 @@
 
 <div class="row">
-    <div class="col-xs-12 col-md-6" id="productSlider">
+    <div class="col-xs-12 col-sm-6 col-md-6" id="productSlider">
         <!-- Top part of the slider -->
-        <div class="col-sm-8 col-md-10 col-md-offset-4" id="carousel-bounding-box">
+        <div class="col-sm-12 col-md-10 col-md-offset-4" id="carousel-bounding-box">
             <div class="carousel slide" id="picCarousel" data-interval="false">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="col-xs-6 col-md-6">
+    <div class="col-xs-12 col-sm-6 col-md-6">
         <div class="col-md-6 col-md-offset-2">
             <h4><?= $product['product_name'] ?></h4>
             <h5><?= $product['product_details'] ?></h5>
@@ -42,7 +42,7 @@
             <div id='cart_update_info'></div>
 
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1 hidden-xs xClass">
             <a href="javascript:history.back(1);">
                <img src="uploads/X.png" style="width:63%" />
             </a>
@@ -50,14 +50,14 @@
     </div>
 </div>
 <div class="row">
-    <div class="hidden-xs col-md-3 col-md-offset-1" id="slider-thumbs">
+    <div class="hidden-xs col-md-3 col-md-offset-1 underCarousel" id="slider-thumbs">
         <div class="col-md-11 col-md-offset-2">
             <!-- Bottom switcher of slider -->
             <ul class="hide-bullets thumbnails">
                 <?php
                 $n = 0;
                 foreach ($product->ownProductthumbList as $image): ?>
-                    <li class='col-sm-3'>
+                    <li>
                         <div class="thumbnail" id="carousel-selector-<?= $n++; ?>">
                             <img src="uploads/<?= $image->image_path ?>"></div>
                     </li>

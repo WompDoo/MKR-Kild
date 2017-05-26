@@ -3,7 +3,7 @@
 <head>
     <base href="<?= BASE_URL ?>">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <meta name="description"
           content="Three friends who share a passion for the wood. With this material,
            we carry out all our ideas - from small details to furniture.
@@ -65,6 +65,28 @@
                         <li>
                             <a class="<?= $controller == 'contact' ? 'active' : '' ?>" href="contact">Contact</a>
                         </li>
+                        <li>
+                            <a class="cartinfo <?php
+                            if (isset ($_SESSION['cart_item'])) {
+                                if (count($_SESSION['cart_item']) > 0) {
+                                    echo "cartIcon";
+                                } else {
+                                    echo "hidden";
+                                }
+                            } else {
+                                echo "hidden";
+                            }
+                            ?>" href="cart" style="position: relative">
+                                <img src="uploads/shoppingcart.png" width="35" height="35">
+
+                                <span id="items_in_shopping_cart" style="color:black" data-qty="<?php
+                                if (isset($_SESSION['cart_item'])) {
+                                    echo count($_SESSION['cart_item']);
+                                } ?>"><?php
+                                    echo count($_SESSION['cart_item']);
+                                    ?></span>
+                            </a>
+                        </li>
                         <ul class="nav lang">
                             <li>
                                 <a href="?language=en_GB">ENG</a>
@@ -117,8 +139,8 @@
                     if (isset($_SESSION['cart_item'])) {
                         echo count($_SESSION['cart_item']);
                     } ?>"><?php
-                          echo count($_SESSION['cart_item']);
-                         ?></span>
+                        echo count($_SESSION['cart_item']);
+                        ?></span>
                 </a>
             </div>
 

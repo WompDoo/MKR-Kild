@@ -14,6 +14,7 @@
                         <tbody>
                         <tr>
                             <th><strong>Name</strong></th>
+                            <th><strong>Quantity</strong></th>
                             <th><strong>Price</strong></th>
                             <th><strong>Action</strong></th>
                         </tr>
@@ -23,6 +24,7 @@
                             <tr data-id="<?= $item['id']; ?>">
                                 <td>
                                     <strong><?php echo $item["product_name"]; ?></strong></td>
+                                    <td><?php echo $item["quantity"]; ?></td>
                                 <td><?php echo "€" . $item["product_price"] * $item["quantity"]; ?></td>
                                <td><a class="btnRemoveAction">Remove Item</a></td>
                             </tr>

@@ -257,20 +257,21 @@ ul {
     margin-right: 35px;
     margin-left: 35px;
 }
+
 @media (min-width: 992px) {
     .productimg {
-        max-width: 330px;
+        height: 250px;
     }
 }
-@media only screen and (max-width: 640px) {
 
-    body {
+@media only screen and (max-width:768px) {
 
-    }
-
-    .shopping-cart {
+    .xClass {
         visibility: hidden;
     }
+}
+
+@media only screen and (max-width: 640px) {
 
     .layer {
         visibility: hidden;
@@ -507,7 +508,9 @@ nav[role="admin"] .navbar-brand {
 .thumbnail {
     width: 150px;
     border: none;
+    margin-left: 1vw;
 }
+
 
 .qtyInput {
     border-radius: 3px;
