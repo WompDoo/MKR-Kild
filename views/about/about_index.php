@@ -62,5 +62,4 @@
 <!-- /.row -->
 <br>
 <!-- /.row -->
-<hr class="footsep">
 

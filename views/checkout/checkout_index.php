@@ -80,6 +80,4 @@
         </form><!-- // End form -->
     </div>
 
-    <hr class="footsep">
-
 </div>

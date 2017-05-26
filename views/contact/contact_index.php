@@ -70,8 +70,6 @@
         </div>
     </div>
 </div>
-</div>
 <br>
 <!-- /.row -->
-<hr class="footsep">
 
