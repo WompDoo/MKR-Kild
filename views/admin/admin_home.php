@@ -27,11 +27,11 @@
                                     <select class="image-picker " id="bgPics" data-limit="3" multiple="multiple">
                                     </select>
                                 </div>
-                                <button type="submit" id="changeBG" class="ui button inverted blue text-center
-"
-                                        name="change BG">Change BG
-                                </button>
                             </div>
+                            <button type="submit" id="changeBG" class="ui button inverted blue text-center
+"
+                                    name="change BG">Change BG
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -46,9 +46,11 @@
 
     <!-- Wrapper for Slides -->
     <div id="myCarousel-son" class="carousel-inner">
-        <div class="item active"><div class="fill" style="background-image:url('uploads/kurikas.jpg');"></div></div>
-        <div class="item"><div class="fill" style="background-image:url('uploads/markmik.JPG');"></div></div>
-        <div class="item"><div class="fill" style="background-image:url('uploads/moobel.JPG');"></div></div>
+        <?php foreach ($backgrounds as $background): ?>
+            <div class="item <?php if ($background['home_id'] == "1"): ?>active<?php endif; ?>">
+                <div class="fill" style="background-image:url('<?= $background['background'] ?>');"></div>
+            </div>
+        <?php endforeach ?>
     </div>
 
 </header>

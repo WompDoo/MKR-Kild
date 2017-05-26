@@ -19,6 +19,9 @@
                                     <textarea class="form-control" type="textarea" id="text" name="text"
                                               placeholder="section text" maxlength="140" rows="7"></textarea>
                                 </div>
+                                <div class="form-group">
+                                    <input type="file" name="picture" id="picture">
+                                </div>
                                 <button type="submit" class="btn btn-default createSection">Add</button>
                             </form>
                         </div>
@@ -57,7 +60,7 @@
                         </div>
                         <div class="col-md-4">
                             <br>
-                            <img src="uploads/<?= $abouttext['picture'] ?>" alt="bla">
+                            <img class="img-responsive" src="uploads/thumbs/<?= $abouttext['picture'] ?>" alt="bla">
                         </div>
                         <a class="ui negative inverted button text-right rmvSection "><em class="glyphicon
                                                                                                     glyphicon-remove"></em></a>
@@ -77,7 +80,7 @@
                     <div class="row text-center">
                         <div class="col-md-4">
                             <br>
-                            <img src="uploads/<?= $abouttext['picture'] ?>" alt="bla">
+                            <img class="img-responsive" src="uploads/thumbs/<?= $abouttext['picture'] ?>" alt="bla">
                         </div>
                         <div class="col-md-6 text-right">
                             <p class="about-description"><?= $abouttext['text'] ?></p>

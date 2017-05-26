@@ -41,9 +41,10 @@
                 <nav class="mobileNav">
                     <ul class="nav text-center">
                         <li>
-                            <a href="./">Home</a>
+                            <a <?php
+                               if ($controller == "home"): ?>class="active"<?php endif; ?> href="./">Home</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a id="Furniture" href="furniture">Furniture</a>
                         </li>
                         <li>

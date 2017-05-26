@@ -150,7 +150,7 @@
 <?php if ($action != "index"): ?>
     <!-- Fixed navbar -->
     <nav id="navbarRegular"
-         class="navbar navbar-inverse <?php if ($controller == "home"): ?>navbar-fixed-top <?php endif; ?> navfix"
+         class="navbar navbar-inverse <?php if ($action  == "home" && $controller == "admin"): ?>navbar-fixed-top<?php endif; ?> navfix"
          role="navigation">
         <div class="container navfix">
             <div id="mobileNav">

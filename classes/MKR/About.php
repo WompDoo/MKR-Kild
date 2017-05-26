@@ -23,6 +23,15 @@ class About
 
     static function getContact()
     {
-        return \R::getAll("SELECT * FROM  contact");
+        return \R::getAll("SELECT * FROM  contact ORDER BY name ASC");
+    }
+    static function getBackground()
+    {
+        return \R::getAll("SELECT * FROM  homebackground");
+    }
+
+    static function getId($id)
+    {
+        return \R::getAll("select * from about where about_id = '$id'");
     }
 }
