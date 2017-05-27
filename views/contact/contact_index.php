@@ -5,25 +5,25 @@
             <div class="row">
                 <div class="name form-group col-md-8">
                     <label for="name"></label>
-                    <input type="text" placeholder="My full name is" name="name" id="name_input" required>
+                    <input type="text" placeholder="<?= __('My full name is')?>" name="name" id="name_input" required>
                 </div>
             </div>
             <div class="row">
                 <div class="email form-group col-md-8">
                     <label for="email"></label>
-                    <input type="email" placeholder="My e-mail is" name="email" id="email_input" required>
+                    <input type="email" placeholder="<?= __('My email is')?>" name="email" id="email_input" required>
                 </div>
             </div>
             <div class="row">
                 <div class="message contactMsg col-md-8">
                     <label for="message"></label>
-                    <textarea name="Qmessage" placeholder="My question is" id="contactMsg" cols="1"
+                    <textarea name="Qmessage" placeholder="<?= __('My question is')?>" id="contactMsg" cols="1"
                               rows="1"></textarea>
                 </div>
             </div>
             <div class="row">
                 <div class="submit col-md-4">
-                    <input id="submitBtn" type="submit" value="Send">
+                    <input id="submitBtn" type="submit" value=<?= __('Send')?>>
                 </div>
             </div>
         </form>
@@ -32,7 +32,7 @@
 
 
 <div id="myP-dad">
-    <div id="myP" class="col-md-4" style="    padding-left: 100px;
+    <div id="myP" class="col-md-4" style="padding-left: 100px;
     border: 1px;
     border-style: solid;
     border-right: 0px;
@@ -46,8 +46,8 @@
                          alt="bla">
                 </div>
                 <div class="col-md-6">
-                    <h4><?= $contacts['name'] ?></h4>
-                    <text><?= $contacts['description'] ?></text>
+                    <h4><?= __($contacts['name']) ?></h4>
+                    <text><?= __($contacts['description']) ?></text>
                 </div>
             </div>
             <br>

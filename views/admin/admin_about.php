@@ -17,7 +17,7 @@
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" type="textarea" id="text" name="text"
-                                              placeholder="section text" maxlength="140" rows="7"></textarea>
+                                              placeholder="section text" maxlength="1400" rows="7"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <input type="file" name="picture" id="picture">
@@ -55,10 +55,10 @@
                     </div>
                     <hr class="navsep">
                     <div class="row text-center">
-                        <div class="col-md-6 col-md-offset-1 text-left" style="padding-left: 30px;">
+                        <div class="col-md-5 col-md-offset-1 text-left" style="padding-left: 30px;">
                             <p class="about-description"><?= $abouttext['text'] ?></p>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-md-offset-1">
                             <br>
                             <img class="img-responsive" src="uploads/thumbs/<?= $abouttext['picture'] ?>" alt="bla">
                         </div>
@@ -78,11 +78,11 @@
                     </div>
                     <hr class="navsep">
                     <div class="row text-center">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-md-offset-1">
                             <br>
                             <img class="img-responsive" src="uploads/thumbs/<?= $abouttext['picture'] ?>" alt="bla">
                         </div>
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-5 text-right">
                             <p class="about-description"><?= $abouttext['text'] ?></p>
                         </div>
                         <a class="ui negative inverted button text-right rmvSection "><em class="glyphicon

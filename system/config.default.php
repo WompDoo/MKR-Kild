@@ -27,7 +27,7 @@ $cfg['DATABASE_DATABASE'] = 'mkr_kild';
 /**
  * Languages this website supports. The first one is the default
  */
-$cfg['WEBSITE_LANGUAGES'] = 'en|et';
+$cfg['WEBSITE_LANGUAGES'] = 'en|et|ru';
 
 /**
  * Force HTTPS connections

@@ -88,15 +88,11 @@
                             </a>
                         </li>
                         <ul class="nav lang">
-                            <li>
-                                <a href="?language=en_GB">ENG</a>
-                            </li>
-                            <li>
-                                <a class="lang-sep" href="?language=et_EE">EST</a>
-                            </li>
-                            <li>
-                                <a class="lang-sep" href="?language=et_EE">RUS</a>
-                            </li>
+                            <?php foreach ($supported_languages as $language) : ?>
+                                <li>
+                                    <a <?= $language == $_SESSION['language'] ? 'class="active"' : '' ?> href="<?= $_SERVER['REQUEST_URI'] . "?language=$language" ?>"><?= $language ?></a>
+                                </li>
+                            <?php endforeach; ?>
                     </ul>
                 </nav>
             </div>
@@ -113,7 +109,7 @@
                     <ul class="nav navbar-lang">
                         <?php foreach ($supported_languages as $language) : ?>
                             <li>
-                                <a <?= $language == $_SESSION['language'] ? 'class="active"' : '' ?> href="<?= $_SERVER['REQUEST_URI'] . "?language=$language" ?>"><?= $language ?></a>
+                                <a <?= $language == $_SESSION['language'] ? 'class="active"' : '' ?> href=<?= "$controller/$action/" .implode("/", $params) . "?language=$language" ?> > <?= $language ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
