@@ -519,7 +519,7 @@ nav[role="admin"] .navbar-brand {
     width:10%;
 }
 
-.thumbnails {
+.thumbs {
     display: inline-flex;
 }
 
@@ -527,3 +527,6 @@ nav[role="admin"] .navbar-brand {
     border: none;
 }
 
+.orderDone {
+    background-color: #21ba45;
+}

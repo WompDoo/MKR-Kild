@@ -53,7 +53,7 @@
     <div class="hidden-xs col-md-3 col-md-offset-1 underCarousel" id="slider-thumbs">
         <div class="col-md-11 col-md-offset-2">
             <!-- Bottom switcher of slider -->
-            <ul class="hide-bullets thumbnails">
+            <ul class="hide-bullets thumbs">
                 <?php
                 $n = 0;
                 foreach ($product->ownProductthumbList as $image): ?>

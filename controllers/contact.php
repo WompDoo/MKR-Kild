@@ -1,11 +1,13 @@
 <?php namespace Halo;
 
+use \MKR\About;
+
 class contact extends Controller
 {
 
     function index()
     {
-
+        $this->contact = About::getContact();
     }
 
     function ajax_sendMail() {

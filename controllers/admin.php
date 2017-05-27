@@ -230,6 +230,7 @@ VALUES ('$background')");
         $id = $_POST['id'];
         $qty = $_POST['qty'];
         \R::exec("UPDATE product SET product_qty ='$qty' WHERE id = '$id'");
+        \R::exec("UPDATE `order` SET order_status ='' WHERE id = '$id'");
     }
 
 }

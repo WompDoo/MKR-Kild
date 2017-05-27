@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="container-modal">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><strong>Uue toote andmed</strong></div>
+                        <div class="panel-heading"><strong>New product details</strong></div>
                         <div class="panel-body">
 
                             <!-- Standard Form -->
@@ -61,7 +61,7 @@
                 <div class="col col-xs-6">
                     <div class="panel-heading">
                         <h4>
-                            <a class="ui positive inverted button" data-toggle="collapse" data-target="#ProductTableCollapse">Tooted</a>
+                            <a class="ui positive inverted button" data-toggle="collapse" data-target="#ProductTableCollapse">Products</a>
                         </h4>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                 <div class="col col-xs-6">
                     <div class="panel-heading">
                         <h4>
-                            <a class="ui positive inverted button" data-toggle="collapse" data-target="#OrderTableCollapse">Tellimused</a>
+                            <a class="ui positive inverted button" data-toggle="collapse" data-target="#OrderTableCollapse">Orders</a>
                         </h4>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                             </thead>
                             <tbody id="fbody">
                             <?php foreach ($orders as $order): ?>
-                                <tr qty="<?= $order['nitem'] ?>" data-id='<?= $order['id'] ?>'>
+                                <tr <?php if ($order['order_status'] == 1) : ?> style="background-color: #21ba45;" <?php endif; ?> qty="<?= $order['nitem'] ?>" data-id='<?= $order['id'] ?>'>
 
                                     <td>
                                         <?= $order['name'] ?>
