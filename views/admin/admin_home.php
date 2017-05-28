@@ -6,11 +6,11 @@
             <div class="modal-body">
                 <div class="container-modal">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><strong>Laadi ülesse pilte</strong></div>
+                        <div class="panel-heading"><strong>Upload pictures</strong></div>
                         <div class="panel-body">
 
                             <!-- Standard Form -->
-                            <h4>Vali arvutist failid</h4>
+                            <h4>Choose files from your computer</h4>
                             <form method="post" enctype="multipart/form-data" id="js-upload-form">
                                 <div class="form-inline">
                                     <div class="form-group">
@@ -21,7 +21,7 @@
                                     </button>
                                 </div>
                             </form>
-                            <h3>Üleslaaditud pildid</h3>
+                            <h3>Uploaded photos</h3>
                             <div class="js-upload-finished" id="selectablePics-dad">
                                 <div id="selectablePics">
                                     <select class="image-picker " id="bgPics" data-limit="3" multiple="multiple">

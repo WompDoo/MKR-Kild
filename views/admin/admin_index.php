@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2>Lisa uus toode</h2>
+                <h2>Add a new product</h2>
             </div>
             <div class="modal-body">
                 <div class="container-modal">
@@ -60,7 +60,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h2>Lisa uus toode</h2>
+                <h2>Add pictures for product</h2>
             </div>
             <div class="modal-body">
                 <div class="container-modal">
@@ -76,7 +76,7 @@
                                 <button type="submit" class="btn btn-default picturesAdd">Add</button>
                             </form>
                         </div>
-                        <div class="panel-heading"><strong>Add picture thumbnail/strong></div>
+                        <div class="panel-heading"><strong>Add picture thumbnail</strong></div>
                         <div data-id="" class="panel-body">
 
                             <!-- Standard Form -->
@@ -112,7 +112,7 @@
                 </div>
                 <div class="col col-xs-6 text-right">
                     <button data-toggle="modal" data-target="#myModal" type="button"
-                            class="ui positive inverted button btn-create">Add New Product
+                            class="ui positive inverted button btn-create">Add a New Product
                     </button>
                 </div>
             </div>

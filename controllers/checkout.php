@@ -190,12 +190,12 @@ class Checkout extends Controller
                                   <div id="logo">
                                     <img src="https://goo.gl/GV04zk" alt="MKR Kild">
                                   </div>
-                                  <h1>INVOICE #' . $newid . '</h1>
+                                  <h1> INVOICE #' . $newid . '</h1>
                                   <div id="company" class="clearfix">
                                     <div>MKR Kild</div>
-                                    <div>Puu 1 Oks 2,<br /> Tartu</div>
-                                    <div>Phone number: +372 555 555 55</div>
-                                    <div><a href="mailto:company@example.com">company@example.com</a></div>
+                                    <div>Turu 72,<br /> Tartu</div>
+                                    <div><?= __("Phone number")?>: +372 555 555 55</div>
+                                    <div><a href="mailto:mkrkild@gmail.com">mkrkild@gmail.com</a></div>
                                   </div>
                                   <div id="project">
                                     <div><span>Client </span>' . ' ' . $name . '</div>

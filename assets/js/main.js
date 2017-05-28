@@ -71,10 +71,10 @@ $(document).ready(function () {
                 $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> Item added to cart</div>").fadeIn('fast').delay(2000).fadeOut('fast');
                 /* If shopping cart is still open, items will appear on it at the same time of adding them */
                 $("#shopping-cart").load(location.href + " #inCart");
-                $(".carticon").removeClass("hidden");
+                $(".cartinfo").removeClass("hidden");
                 //var itemsInCart = $("#items_in_shopping_cart").val();
                 var n = $("#items_in_shopping_cart").data("qty");
-                $("#items_in_shopping_cart").html(n + 1);
+                $("#items_in_shopping_cart").html(n += 1);
                 console.log(n);
             })
         })
@@ -97,7 +97,7 @@ $(document).ready(function () {
 
     //Empty cart
     $("a#btnEmpty").on("click", function () {
-        if (confirm(areyouSure) == true) {
+        if (confirm("Are you sure you want to empty your cart?") == true) {
             $.ajax({
                 type: "GET",
                 url: "cart/emptyCart"
