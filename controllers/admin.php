@@ -37,7 +37,9 @@ class admin extends Controller
     function ajax_destroyStock()
     {
         $id = $_POST['id'];
+        \R::exec("DELETE FROM productthumb WHERE product_id = '$id'");
         \R::exec("DELETE FROM product WHERE id = '$id'");
+
 
     }
 
@@ -49,10 +51,41 @@ class admin extends Controller
         $description = $_POST["description"];
         $category = $_POST['category'];
 
+
         \R::exec("INSERT INTO product (product_name, product_type_id, product_details, product_price, product_qty)
 VALUES ('$name', '$category', '$description', $price, $qty)");
 
     }
+
+    function ajax_uploadProduct(){
+        $total = count($_FILES['file']['name']);
+        var_dump($total);
+        for ($i = 0; $i < $total; $i++) {
+            if (file_exists('uploads/' . $_FILES['file']['name'])) {
+            } else {
+                move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $_FILES['file']['name']);
+            }
+        }
+        exit ();
+
+    }
+
+    function ajax_addPics(){
+        $id = $_POST['id'];
+        $picture = $_POST["picture"];
+
+        \R::exec("INSERT INTO productthumb (image_path, product_id)
+VALUES ('$picture', '$id')");
+    }
+
+    function ajax_addThumb(){
+        $id = $_POST['id'];
+        $picture = $_POST["picture"];
+
+        \R::exec("UPDATE product SET product_image ='$picture' WHERE id='$id';");
+    }
+
+
 
     function furniture()
     {
@@ -137,6 +170,7 @@ VALUES ('$name', '$category', '$description', $price, $qty)");
     {
         $this->about = About::getAbout();
         $this->description = About::getDescription();
+
     }
 
     function contact()
@@ -178,16 +212,28 @@ VALUES ('$name', '$description', '$picture')");
         exit();
     }
 
+    function updateTrans()
+    {
+        $id = $_POST['id'];
+        $query = \R::exec("SELECT * FROM about WHERE id = '$id'");
+        $engtext = $query['text'];
+        $esttext = $_POST["esttext"];
+        $rustext = $_POST["rustext"];
+        \R::exec("UPDATE translations SET translation='$esttext' WHERE language='et' and WHERE phrase='$engtext'");
+        \R::exec("UPDATE translations SET translation='$rustext' WHERE language='ru' and WHERE phrase='$engtext'");
+
+    }
+
     function ajax_addSection()
     {
 
         $heading = $_POST["heading"];
-        $text = $_POST["text"];
+        $engtext = $_POST["engtext"];
         $picture = $_POST["picture"];
 
 
         \R::exec("INSERT INTO about (heading, text, picture)
-VALUES ('$heading', '$text', '$picture')");
+VALUES ('$heading', '$engtext', '$picture')");
 
 
     }

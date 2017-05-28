@@ -53,6 +53,51 @@
     </div>
 </div>
 
+<div id="pictureModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2>Lisa uus toode</h2>
+            </div>
+            <div class="modal-body">
+                <div class="container-modal">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong>Add pictures for product</strong></div>
+                        <div data-id="" class="panel-body">
+
+                            <!-- Standard Form -->
+                            <form data-id="" id="newPictures" method="post">
+                                <div class="form-group">
+                                    <input type="file" name="productPics[]" id="productPics" multiple>
+                                </div>
+                                <button type="submit" class="btn btn-default picturesAdd">Add</button>
+                            </form>
+                        </div>
+                        <div class="panel-heading"><strong>Add picture thumbnail/strong></div>
+                        <div data-id="" class="panel-body">
+
+                            <!-- Standard Form -->
+                            <form data-id="" id="newPictures" method="post">
+                                <div class="form-group">
+                                    <input type="file" name="productThumb[]" id="productThumb" multiple>
+                                </div>
+                                <button type="submit" class="btn btn-default ThumbAdd">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <div id="ProductTable" class="row">
     <div class="col-xs-12 col-sm-12">
@@ -90,6 +135,7 @@
                             <th>Category</th>
                             <th>Price</th>
                             <th>Quantity/stock</th>
+                            <th class="text-center"><em class="glyphicon glyphicon-picture"></em></th>
                             <th class="text-center"><em class="glyphicon glyphicon-pencil"></em></th>
                             <th class="text-center"><em class="glyphicon glyphicon-cog"></em></th>
                         </tr>
@@ -112,6 +158,11 @@
                                 </td>
                                 <td class='qty'>
                                     <?= $product['product_qty'] ?>
+                                </td>
+                                <td align="center">
+                                    <button data-id='<?= $product['id'] ?>' data-toggle="modal" data-target="#pictureModal" type="button"
+                                            class="ui positive inverted button picture">Add Pictures
+                                    </button>
                                 </td>
                                 <td align="center">
                                     <a class="ui positive inverted button text-right add"><em class="glyphicon

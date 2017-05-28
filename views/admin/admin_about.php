@@ -16,13 +16,56 @@
                                            placeholder="Heading" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" type="textarea" id="text" name="text"
-                                              placeholder="section text" maxlength="1400" rows="7"></textarea>
+                                    <textarea class="form-control" type="textarea" id="eng-text" name="eng-text"
+                                              placeholder="English text" maxlength="1400" rows="7"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" type="textarea" id="est-text" name="est-text"
+                                              placeholder="Estonian text" maxlength="1400" rows="7"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" type="textarea" id="rus-text" name="rus-text"
+                                              placeholder="Russian text" maxlength="1400" rows="7"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <input type="file" name="picture" id="picture">
                                 </div>
                                 <button type="submit" class="btn btn-default createSection">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="translationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-modal">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><strong>New section</strong></div>
+                        <div class="panel-body">
+
+                            <!-- Standard Form -->
+                            <form id="newTranslation" method="post">
+                                <div class="form-group">
+                                    <textarea class="form-control" type="textarea" id="est-text" name="est-text"
+                                              placeholder="Estonian text" maxlength="1400" rows="7"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" type="textarea" id="rus-text" name="rus-text"
+                                              placeholder="Russian text" maxlength="1400" rows="7"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-default updateTrans">Add</button>
                             </form>
                         </div>
                     </div>
@@ -62,8 +105,14 @@
                             <br>
                             <img class="img-responsive" src="uploads/thumbs/<?= $abouttext['picture'] ?>" alt="bla">
                         </div>
-                        <a class="ui negative inverted button text-right rmvSection "><em class="glyphicon
-                                                                                                    glyphicon-remove"></em></a>
+                        <a class="ui negative inverted button text-right rmvSection "><em
+                                    class="glyphicon glyphicon-remove"></em></a>
+                        <!--<button data-toggle="modal" data-target="#translationModal" value="Background"
+                                class="navbar-text ui inverted red button" id="showModal">
+                            <a>
+                                Update translations
+                            </a>
+                        </button>-->
                     </div>
                 </div>
                 <br>
@@ -87,6 +136,12 @@
                         </div>
                         <a class="ui negative inverted button text-right rmvSection "><em class="glyphicon
                                                                                                     glyphicon-remove"></em></a>
+                        <!--<button data-toggle="modal" data-target="#translationModal" value="Background"
+                                class="navbar-text ui inverted red button" id="showModal">
+                            <a>
+                                Update translations
+                            </a>
+                        </button>-->
                     </div>
                 </div>
             <?php endif; ?>

@@ -89,6 +89,18 @@
                     <button class="navbar-text ui inverted green button">
                         <a href="admin/index">Dashboard</a>
                     </button>
+                <?php elseif ($action == "furniture" && $controller == "admin"): ?>
+                    <button class="navbar-text ui inverted green button">
+                        <a href="admin/index">Dashboard</a>
+                    </button>
+                <?php elseif ($action == "sketchbooks" && $controller == "admin"): ?>
+                    <button class="navbar-text ui inverted green button">
+                        <a href="admin/index">Dashboard</a>
+                    </button>
+                <?php elseif ($action == "woodturning" && $controller == "admin"): ?>
+                    <button class="navbar-text ui inverted green button">
+                        <a href="admin/index">Dashboard</a>
+                    </button>
                 <?php elseif ($action == "about" && $controller == "admin"): ?>
                     <button id="edit" class="navbar-text ui inverted red button">
                         <a>
@@ -150,7 +162,7 @@
 <?php if ($action != "index"): ?>
     <!-- Fixed navbar -->
     <nav id="navbarRegular"
-         class="navbar navbar-inverse <?php if ($action  == "home" && $controller == "admin"): ?>navbar-fixed-top<?php endif; ?> navfix"
+         class="navbar navbar-inverse <?php if ($action == "home" && $controller == "admin"): ?>navbar-fixed-top<?php endif; ?> navfix"
          role="navigation">
         <div class="container navfix">
             <div id="mobileNav">
