@@ -1,3 +1,5 @@
+<link href="assets/css/checkout.css" rel="stylesheet">
+
 <div id="contactModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -36,36 +38,36 @@
     </div>
 </div>
 
-<div class="row text-left">
+<div class="text-left">
     <div class="col-md-4 col-md-offset-2">
-        <form>
+        <form method="post" id="questionForm">
             <div class="row">
-                <div class="form-group col-md-10 ">
-                    <label for="name" class="control-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name"
-                           value="">
+                <div class="name form-group col-md-8">
+                    <label for="name"></label>
+                    <input type="text" placeholder="<?= __('My full name is')?>" name="name" id="name_input" required>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-10">
-                    <label for="name" class="control-label">Email</label>
-                    <input type="username" class="form-control" id="username" name="username"
-                           placeholder="example@domain.com" value="">
+                <div class="email form-group col-md-8">
+                    <label for="email"></label>
+                    <input type="email" placeholder="<?= __('My email is')?>" name="email" id="email_input" required>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-10">
-                    <label for="name" class="control-label">Message</label>
-                    <textarea class="form-control" rows="4" name="message"></textarea>
+                <div class="message contactMsg col-md-8">
+                    <label for="message"></label>
+                    <textarea name="Qmessage" placeholder="<?= __('My question is')?>" id="contactMsg" cols="1"
+                              rows="1"></textarea>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-10 text-right">
-                    <input id="submit" name="submit" type="submit" value="Send" class="btn btn-default">
+                <div class="submit col-md-4">
+                    <input id="submitBtn" type="submit" value=<?= __('Send')?>>
                 </div>
             </div>
         </form>
     </div>
+</div>
 
     <div id="myP-dad">
         <div id="myP" class="col-md-4" style="    padding-left: 100px;

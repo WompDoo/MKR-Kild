@@ -68,13 +68,14 @@ $(document).ready(function () {
                 /* Empty the update info bar before calling it. Otherwise appended content will duplicate. */
                 $('#cart_update_info').empty();
                 /* append data/info to cart_update_info bar */
-                $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> <p>Item added to shopping cart</p></div>").fadeIn('fast').delay(2000).fadeOut('fast');
+                $("#cart_update_info").append("<div id='new_item_added'><i class='glyphicon glyphicon-ok' style='color:green;'></i> Item added to cart</div>").fadeIn('fast').delay(2000).fadeOut('fast');
                 /* If shopping cart is still open, items will appear on it at the same time of adding them */
                 $("#shopping-cart").load(location.href + " #inCart");
-                $(".cartinfo").removeClass("hidden");
+                $(".carticon").removeClass("hidden");
                 //var itemsInCart = $("#items_in_shopping_cart").val();
                 var n = $("#items_in_shopping_cart").data("qty");
                 $("#items_in_shopping_cart").html(n + 1);
+                console.log(n);
             })
         })
         e.preventDefault();
@@ -96,7 +97,7 @@ $(document).ready(function () {
 
     //Empty cart
     $("a#btnEmpty").on("click", function () {
-        if (confirm("Are you sure you want to empty your shopping cart?") == true) {
+        if (confirm(areyouSure) == true) {
             $.ajax({
                 type: "GET",
                 url: "cart/emptyCart"

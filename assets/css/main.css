@@ -60,6 +60,10 @@ body {
     display: inline-flex;
 }
 
+#pictureContact {
+    color: white;
+}
+
 .footsep {
     width: 90%;
     border: 0;
@@ -219,6 +223,7 @@ ul {
 }
 
 .group-social {
+    width: 23%;
     float: right;
     display: flex;
 }
@@ -285,6 +290,10 @@ ul {
 }
 
 @media only screen and (max-width: 640px) {
+
+    .group-social {
+        width: 100%;
+    }
 
     .layer {
         visibility: hidden;

@@ -38,7 +38,8 @@
                        value="<?= __('Add to cart')?>"
                        class="btnAddAction"/>
             </form>
-            <div id='cart_update_info'></div>
+            <div id='cart_update_info'>
+            </div>
 
         </div>
         <div class="col-md-1 hidden-xs xClass">

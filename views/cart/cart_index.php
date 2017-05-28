@@ -53,3 +53,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var itemAdded = <?php echo __('Item added to cart'); ?>;
+    var areyouSure = <?= __('Are you sure you want to empty your cart?'); ?>;
+</script>

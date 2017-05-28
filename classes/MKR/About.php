@@ -23,7 +23,7 @@ class About
 
     static function getContact()
     {
-        return \R::getAll("SELECT * FROM  contact ORDER BY name ASC");
+        return \R::getAll("SELECT * FROM  contact ORDER BY name DESC");
     }
     static function getBackground()
     {

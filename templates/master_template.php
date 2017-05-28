@@ -46,7 +46,7 @@
                 <nav class="mobileNav">
                     <ul class="nav text-center">
                         <li>
-                            <a class="<?= $controller == 'home' ? 'active' : '' ?>" href="./">Home</a>
+                            <a class="<?= $controller == 'home' ? 'active' : '' ?>" href="./"><?= __('Home') ?></a>
                         </li>
 
                         <li>
@@ -98,7 +98,7 @@
             </div>
         </div>
         <div id="mobileMenuLink" class="text-center">
-            <a>Menu</a>
+            <a><?= __('Menu') ?></a>
         </div>
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">

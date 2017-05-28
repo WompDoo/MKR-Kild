@@ -176,15 +176,11 @@
                                 <a href="admin/contact">Contact</a>
                             </li>
                             <ul class="nav lang">
-                                <li>
-                                    <a href="#">ENG</a>
-                                </li>
-                                <li>
-                                    <a class="lang-sep" href="#">EST</a>
-                                </li>
-                                <li>
-                                    <a class="lang-sep" href="#">RUS</a>
-                                </li>
+                                <?php foreach ($supported_languages as $language) : ?>
+                                    <li>
+                                        <a <?= $language == $_SESSION['language'] ? 'class="active"' : '' ?> href="<?= $_SERVER['REQUEST_URI'] . "?language=$language" ?>"><?= $language ?></a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </ul>
                     </nav>
@@ -200,15 +196,11 @@
                     <!--<div class="shopping-cart">-->
                     <div class="nav languages">
                         <ul class="nav navbar-lang">
-                            <li>
-                                <a href="#">EST</a>
-                            </li>
-                            <li>
-                                <a class="active" href="#">ENG</a>
-                            </li>
-                            <li>
-                                <a href="#">RUS</a>
-                            </li>
+                            <?php foreach ($supported_languages as $language) : ?>
+                                <li>
+                                    <a <?= $language == $_SESSION['language'] ? 'class="active"' : '' ?> href=<?= "$controller/$action/" .implode("/", $params) . "?language=$language" ?> > <?= $language ?></a>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                     <a class="cartIcon hidden" href="cart" style="position: relative">
