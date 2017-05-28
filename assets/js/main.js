@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     // fixed on scroll
-    $(document).scroll(function() {
-        if ($(this).scrollTop() > $('#navbarRegular').height() ) {
+    $(document).scroll(function () {
+        if ($(this).scrollTop() > $('#navbarRegular').height()) {
             $('.sticknav').addClass('fixed-me');
         } else {
             $('.sticknav').removeClass('fixed-me text-center');
@@ -204,7 +204,7 @@ $(document).ready(function () {
             data: {id: id},
             dataType: 'text',
             success: function (data) {
-                $("#order-dad").load(location.href + " #order");
+                $("#product-dad").load(location.href + " #product");
 
             }
         });
@@ -219,7 +219,6 @@ $(document).ready(function () {
             dataType: 'text',
             success: function (data) {
                 $("#product-dad").load(location.href + " #product");
-
             }
         });
     }));
@@ -228,16 +227,33 @@ $(document).ready(function () {
     $(document).on("click", ".createSection", (function () {
         var path = document.getElementById("picture").value;
         var heading = document.getElementById("heading").value;
-        var text = document.getElementById("text").value;
+        var esttext = document.getElementById("est-text").value;
+        var engtext = document.getElementById("eng-text").value;
+        var rustext = document.getElementById("rus-text").value;
         var picture = path.replace(/^.*\\/, "");
         $.ajax({
             type: 'POST',
             url: 'admin/addSection',
-            data: {heading:heading, text:text, picture: picture},
+            data: {heading: heading, esttext: esttext, engtext: engtext, rustext: rustext, picture: picture},
             dataType: 'text',
             success: function (data) {
                 $("#myP-dad").load(location.href + " #myP");
                 console.log(data);
+
+            }
+        });
+    }));
+
+    $(document).on("click", ".updateTrans", (function () {
+        var esttext = document.getElementById("est-text").value;
+        var engtext = document.getElementById("eng-text").value;
+        var rustext = document.getElementById("rus-text").value;
+        $.ajax({
+            type: 'POST',
+            url: 'admin/updateTrans',
+            data: {esttext: esttext, engtext: engtext, rustext: rustext},
+            dataType: 'text',
+            success: function (data) {
 
             }
         });
@@ -251,7 +267,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: 'admin/addContact',
-            data: {contactName:contactName, description:description, picture: picture},
+            data: {contactName: contactName, description: description, picture: picture},
             dataType: 'text',
             success: function (data) {
                 console.log(data);
@@ -434,15 +450,15 @@ $(document).ready(function () {
     $('#changeBG').on('click', function () {
         var value = $("select").data('picker');
         var selected = value.select[0].selectedOptions;
-        $.ajax ({
+        $.ajax({
             url: 'admin/emptyBackground',
             success: function () {
                 $('#myCarousel-son').children(":first").addClass("active");
                 $(selected).each(function () {
                     var imagelink = this.value;
-                    $.ajax ({
+                    $.ajax({
                         url: 'admin/changeBackground',
-                        data: {background:imagelink},
+                        data: {background: imagelink},
                         type: 'post',
                         success: function (data) {
                             $("#myCarousel").load(location.href + " #myCarousel-son");
@@ -537,5 +553,110 @@ $(document).ready(function () {
             }
         });
     })
+
+    $('.picturesAdd').on('click', function () {
+        var file_data = $('#productPics').prop('files')[0];
+        var form_data = new FormData();
+        form_data.append('file', file_data);
+        event.preventDefault();
+        $.ajax({
+            url: 'admin/uploadProduct', // point to server-side PHP script
+            dataType: 'text',  // what to expect back from the PHP script, if anything
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success: function (data) {
+                var id = $(this).parents("tr").attr("data-id");
+                var path = document.getElementById("productPics").value;
+                var picture = path.replace(/^.*\\/, "");
+                $.ajax({
+                    type: 'POST',
+                    url: 'admin/addPics',
+                    data: {id: id, picture: picture},
+                    dataType: 'text',
+                    success: function (data) {
+                        $("#myP-dad").load(location.href + " #myP");
+
+                    }
+                });
+
+            }
+        });
+    })
+
+    $(document).on("click", ".picture", function (e) {
+        var id = $(this).data('id');
+
+        $('.picturesAdd').on('click', function () {
+            var file_data = $('#productPics').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+            event.preventDefault();
+            $.ajax({
+                url: 'admin/uploadProduct', // point to server-side PHP script
+                dataType: 'text',  // what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function (data) {
+                    console.log(id);
+                    var path = document.getElementById("productPics").value;
+                    var picture = path.replace(/^.*\\/, "");
+                    $.ajax({
+                        type: 'POST',
+                        url: 'admin/addPics',
+                        data: {id: id, picture: picture},
+                        dataType: 'text',
+                        success: function (data) {
+                            $("#myP-dad").load(location.href + " #myP");
+
+                        }
+                    });
+
+                }
+            });
+        })
+    });
+
+    $(document).on("click", ".picture", function (e) {
+        var id = $(this).data('id');
+
+        $('.ThumbAdd').on('click', function () {
+            var file_data = $('#productThumb').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+            event.preventDefault();
+            $.ajax({
+                url: 'admin/uploadProduct', // point to server-side PHP script
+                dataType: 'text',  // what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function (data) {
+                    console.log(id);
+                    var path = document.getElementById("productThumb").value;
+                    var picture = path.replace(/^.*\\/, "");
+                    $.ajax({
+                        type: 'POST',
+                        url: 'admin/addThumb',
+                        data: {id: id, picture: picture},
+                        dataType: 'text',
+                        success: function (data) {
+                            $("#myP-dad").load(location.href + " #myP");
+
+                        }
+                    });
+
+                }
+            });
+        })
+    });
+
 
 });
